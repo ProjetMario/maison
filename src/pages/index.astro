@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import MainLayout from '../layouts/MainLayout.astro';
 import GalleryDisplay from '../components/GalleryDisplay.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
@@ -6,6 +7,7 @@ import Icon from '../components/Icon.astro';
 import heroCover from '../gallery/landing/VUE LANDINGG.jpeg';
 import heroImg2 from '../gallery/landing/LANDING 2.jpg';
 import heroImg4 from '../gallery/landing/LANDING 4.jpg';
+import lifestyleCover from '../gallery/landing/image.png';
 
 const heroImages = [
 	{ src: heroCover, alt: 'Vue sur la maison depuis la terrasse' },
@@ -35,7 +37,7 @@ const heroImages = [
 					<div class="hero-stat-label">Surface</div>
 				</div>
 				<div class="hero-stat">
-					<div class="hero-stat-value">4</div>
+					<div class="hero-stat-value">3</div>
 					<div class="hero-stat-label">Chambres</div>
 				</div>
 				<div class="hero-stat">
@@ -100,6 +102,16 @@ const heroImages = [
 						Garage double + stationnements couverts et extérieurs.
 					</p>
 				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="city" size={28} /></div>
+					<h3 class="feature-title">Emplacement premium</h3>
+					<p class="feature-desc">Maison au bout d'une impasse, à deux pas des commerces, écoles et clubs sportifs.</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="charge" size={28} /></div>
+					<h3 class="feature-title">Borne électrique</h3>
+					<p class="feature-desc">Borne installée devant le garage pour recharger sa voiture électrique depuis la maison.</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -107,6 +119,9 @@ const heroImages = [
 	<!-- SECTION NOTRE VIE ICI -->
 	<section class="section reveal" style="background: var(--bg-card);">
 		<div class="container-modern">
+			<div class="lifestyle-cover">
+				<Image src={lifestyleCover} alt="Moments de vie à Voglans" loading="lazy" />
+			</div>
 			<div class="section-header">
 				<p class="section-eyebrow">Lifestyle</p>
 				<h2 class="section-title">Notre vie ici</h2>

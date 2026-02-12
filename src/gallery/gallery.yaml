@@ -128,24 +128,45 @@ images:
       collections:
         - interieur
     exif: {}
-  - path: landing/LANDING.jpg
+  - path: landing/LANDING 3.jpeg
     meta:
-      title: Vue d'ensemble de la maison
-      description: Façade de la maison récente avec garage double et terrasse exposée sud.
+      title: Entrée de la maison
+      description: Entrée de la maison avec garage accolé au voisin.
       collections:
         - landing
     exif: {}
   - path: landing/LANDING 2.jpg
     meta:
       title: Terrasse principale
-      description: Terrasse nord avec vue lac, idéale pour les repas d'été.
+      description: Vue sur la Dent du Chat depuis le séjour.
+      collections:
+        - landing
+    exif: {}
+  - path: landing/LANDING 4.jpeg
+    meta:
+      title: Séjour de 60m²
+      description: Séjour de 60m² avec cuisine ouverte, baies vitrées sur la terrasse.
+      collections:
+        - landing
+    exif: {}
+  - path: landing/LANDING.jpg
+    meta:
+      title: Vue d'ensemble de la maison
+      description: Vue panoramique depuis le séjour.
+      collections:
+        - landing
+    exif: {}
+  - path: landing/LANDING 5.jpeg
+    meta:
+      title: Couloir menant aux chambres
+      description: Couloir menant aux 3 chambres, salle de bain et buanderie.
       collections:
         - landing
     exif: {}
   - path: landing/LANDING 4.jpg
     meta:
-      title: Jardin avec piscine
-      description: Jardin d'environ 150m2 avec piscine chauffée et terrasse exotique.
+      title: Vue de la piscine
+      description: Vue de la piscine depuis le séjour.
       collections:
         - landing
     exif: {}
@@ -240,24 +261,4 @@ images:
       collections:
         - description-des-pieces
     exif: {}
-  - path: landing/LANDING 3.jpeg
-    meta:
-      title: Landing 3
-      description: ''
-      collections:
-        - landing
-    exif: {}
-  - path: landing/LANDING 4.jpeg
-    meta:
-      title: Landing 4
-      description: ''
-      collections:
-        - landing
-    exif: {}
-  - path: landing/LANDING 5.jpeg
-    meta:
-      title: Landing 5
-      description: ''
-      collections:
-        - landing
-    exif: {}
+  # (entries for landing images reordered above)

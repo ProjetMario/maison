@@ -32,7 +32,7 @@ const { images } = Astro.props;
 					decoding="async"
 				/>
 				<div class="gallery-masonry-overlay">
-					<span class="gallery-masonry-title">{image.title}</span>
+					<span class="gallery-masonry-title">{image.description || image.title}</span>
 				</div>
 			</a>
 		))
