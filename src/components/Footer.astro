@@ -1,0 +1,31 @@
+---
+const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL || '/';
+const cleanBase = base === '/' ? '' : base.replace(/\/$/, '');
+const buildLink = (path: string) => {
+	if (!path) return cleanBase || '/';
+	return cleanBase ? `${cleanBase}/${path}` : `/${path}`;
+};
+
+const menuItems = [
+	{ name: 'Accueil', link: buildLink('') },
+	{ name: 'Localisation', link: buildLink('localisation') },
+	{ name: 'Intérieurs', link: buildLink('description') },
+	{ name: 'Extérieurs', link: buildLink('les-exterieurs') },
+	{ name: 'Contact', link: buildLink('contact') },
+];
+---
+
+<footer class="footer-modern">
+	<div class="container-modern">
+		<div class="footer-content">
+			<div class="footer-brand">Vente entre particuliers</div>
+			<ul class="footer-links">
+				{menuItems.map((item) => (
+					<li><a href={item.link}>{item.name}</a></li>
+				))}
+			</ul>
+		</div>
+		<p class="footer-copy">© {year} — Maison vue Lac du Bourget</p>
+	</div>
+</footer>

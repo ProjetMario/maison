@@ -1,0 +1,263 @@
+collections:
+  - id: nature
+    name: Nature
+  - id: travel
+    name: Travel
+  - id: street
+    name: Street
+  - id: interieur
+    name: Intérieur des pièces
+  - id: description-des-pieces
+    name: Description Des Pieces
+  - id: exterieur
+    name: Exterieur
+  - id: localisation
+    name: Localisation
+images:
+  - path: nature/nature-2.jpg
+    meta:
+      title: Nature scene 2
+      description: Serene natural landscape capturing the essence of wilderness.
+      collections:
+        - nature
+    exif: {}
+  - path: nature/nature-3.jpg
+    meta:
+      title: Nature scene 3
+      description: Breathtaking natural vista showcasing environmental beauty.
+      collections:
+        - featured
+        - nature
+    exif: {}
+  - path: nature/nature-5.jpg
+    meta:
+      title: Nature scene 5
+      description: Natural landscape showing the raw beauty of the environment.
+      collections:
+        - nature
+    exif: {}
+  - path: nature/nature-7.jpg
+    meta:
+      title: Nature scene 7
+      description: Stunning natural landscape capturing environmental beauty.
+      collections:
+        - featured
+        - nature
+    exif: {}
+  - path: nature/nature-8.jpg
+    meta:
+      title: Nature scene 8
+      description: Beautiful natural vista showcasing environmental wonder.
+      collections:
+        - nature
+    exif: {}
+  - path: nature/L1002174.jpg
+    meta:
+      title: Travel scene 6
+      description: null
+      collections:
+        - featured
+        - nature
+    exif:
+      captureDate: 2025-03-27T10:35:21.000Z
+      fNumber: 8
+      focalLength: 28
+      iso: 100
+      model: LEICA Q3
+      shutterSpeed: 1250
+      lensModel: SUMMILUX 1:1.7/28 ASPH.
+  - path: nature/nature-10.jpg
+    meta:
+      title: Nature scene 10
+      description: Majestic natural landscape displaying environmental splendor.
+      collections:
+        - nature
+    exif: {}
+  - path: street/stree-1.jpg
+    meta:
+      title: Street photography 1
+      description: Urban scene capturing the essence of city life.
+      collections:
+        - featured
+        - street
+    exif: {}
+  - path: travel/travel-1.jpg
+    meta:
+      title: Travel scene 1
+      description: Journey through remarkable destinations.
+      collections:
+        - featured
+        - travel
+    exif: {}
+  - path: nature/nature-1.jpg
+    meta:
+      title: Nature 1
+      description: ''
+      collections:
+        - nature
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES.jpeg
+    meta:
+      title: Salon avec cuisine ouverte
+      description: >-
+        Vue du salon spacieux avec cuisine ouverte, baie vitrée offrant une vue
+        dégagée sur le lac et les montagnes.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES.jpg
+    meta:
+      title: Chambre parentale
+      description: >-
+        Suite parentale confortable avec dressing intégré et salle d'eau
+        privative.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 2.jpeg
+    meta:
+      title: Salle de bain moderne
+      description: Salle d'eau équipée d'une douche et baignoire, avec WC séparé.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 3.jpeg
+    meta:
+      title: Cuisine équipée
+      description: Cuisine moderne et fonctionnelle, ouverte sur le séjour.
+      collections:
+        - interieur
+    exif: {}
+  - path: landing/LANDING.jpg
+    meta:
+      title: Vue d'ensemble de la maison
+      description: Façade de la maison récente avec garage double et terrasse exposée sud.
+      collections:
+        - landing
+    exif: {}
+  - path: landing/LANDING 2.jpg
+    meta:
+      title: Terrasse principale
+      description: Terrasse nord avec vue lac, idéale pour les repas d'été.
+      collections:
+        - landing
+    exif: {}
+  - path: landing/LANDING 4.jpg
+    meta:
+      title: Jardin avec piscine
+      description: Jardin d'environ 150m2 avec piscine chauffée et terrasse exotique.
+      collections:
+        - landing
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 10.jpeg
+    meta:
+      title: Vue Des Pieces 10
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 11.jpeg
+    meta:
+      title: Vue Des Pieces 11
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 12.jpeg
+    meta:
+      title: Vue Des Pieces 12
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 13.jpeg
+    meta:
+      title: Vue Des Pieces 13
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 14.jpeg
+    meta:
+      title: Vue Des Pieces 14
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 15.jpeg
+    meta:
+      title: Vue Des Pieces 15
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 16.jpeg
+    meta:
+      title: Vue Des Pieces 16
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 4.jpeg
+    meta:
+      title: Vue Des Pieces 4
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 5.jpeg
+    meta:
+      title: Vue Des Pieces 5
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 6.jpeg
+    meta:
+      title: Vue Des Pieces 6
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 7.jpeg
+    meta:
+      title: Vue Des Pieces 7
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 8.jpeg
+    meta:
+      title: Vue Des Pieces 8
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 9.jpeg
+    meta:
+      title: Vue Des Pieces 9
+      description: ''
+      collections:
+        - description-des-pieces
+    exif: {}
+  - path: landing/LANDING 3.jpeg
+    meta:
+      title: Landing 3
+      description: ''
+      collections:
+        - landing
+    exif: {}
+  - path: landing/LANDING 4.jpeg
+    meta:
+      title: Landing 4
+      description: ''
+      collections:
+        - landing
+    exif: {}
+  - path: landing/LANDING 5.jpeg
+    meta:
+      title: Landing 5
+      description: ''
+      collections:
+        - landing
+    exif: {}

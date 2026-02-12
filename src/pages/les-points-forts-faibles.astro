@@ -1,0 +1,111 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GalleryDisplay from '../components/GalleryDisplay.astro';
+---
+
+<MainLayout>
+	<!-- HEADER -->
+	<section class="section" style="padding-top: 140px;">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Transparence</p>
+				<h1 class="section-title">Points clés</h1>
+				<p class="section-desc">
+					Une présentation honnête de ce que nous aimons... et des petits défauts.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- GALERIE -->
+	<section class="section" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">En images</p>
+				<h2 class="section-title">Ce que nous aimons montrer</h2>
+				<p class="section-desc">Quelques photos qui résument l'esprit de la maison.</p>
+			</div>
+			<GalleryDisplay collection="interieur" />
+		</div>
+	</section>
+
+	<!-- POINTS FORTS -->
+	<section class="section" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Atouts</p>
+				<h2 class="section-title">Les points forts</h2>
+			</div>
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="feature-icon">👁️</div>
+					<h3 class="feature-title">Vue panoramique</h3>
+					<p class="feature-desc">Dominante sur le lac et les montagnes</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🏊</div>
+					<h3 class="feature-title">Piscine chauffée</h3>
+					<p class="feature-desc">Plein sud, terrasse bois exotique</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🌡️</div>
+					<h3 class="feature-title">RT 2012</h3>
+					<p class="feature-desc">Maison récente, très économe</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">☀️</div>
+					<h3 class="feature-title">Luminosité</h3>
+					<p class="feature-desc">8 mètres de baies vitrées</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🤫</div>
+					<h3 class="feature-title">Quartier calme</h3>
+					<p class="feature-desc">Résidentiel et paisible</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">❄️</div>
+					<h3 class="feature-title">Climatisation</h3>
+					<p class="feature-desc">Réversible, toutes pièces</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- POINTS FAIBLES -->
+	<section class="section">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow" style="color: #ef4444;">À considérer</p>
+				<h2 class="section-title">Les points faibles</h2>
+			</div>
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+				<div style="background: #1a1a1d; border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 16px; padding: 1.5rem;">
+					<p style="color: #a1a1aa; font-size: 0.9375rem; margin: 0;">⚠️ Maison avec escaliers (accès non adapté PMR)</p>
+				</div>
+				<div style="background: #1a1a1d; border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 16px; padding: 1.5rem;">
+					<p style="color: #a1a1aa; font-size: 0.9375rem; margin: 0;">⚠️ Quelques nuisances sonores (voie rapide, aéroport en hiver)</p>
+				</div>
+				<div style="background: #1a1a1d; border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 16px; padding: 1.5rem;">
+					<p style="color: #a1a1aa; font-size: 0.9375rem; margin: 0;">⚠️ Léger vis-à-vis avec les voisins</p>
+				</div>
+				<div style="background: #1a1a1d; border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 16px; padding: 1.5rem;">
+					<p style="color: #a1a1aa; font-size: 0.9375rem; margin: 0;">⚠️ Maison indépendante mais garage mitoyen</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CONTACT -->
+	<section class="section">
+		<div class="container-narrow">
+			<div class="contact-section">
+				<p class="section-eyebrow">Des questions ?</p>
+				<h2 class="section-title">Parlons-en</h2>
+				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-note">
+					Nous répondrons en toute honnêteté.
+				</p>
+			</div>
+		</div>
+	</section>
+</MainLayout>

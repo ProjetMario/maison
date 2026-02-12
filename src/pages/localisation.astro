@@ -1,0 +1,116 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GalleryDisplay from '../components/GalleryDisplay.astro';
+---
+
+<MainLayout>
+	<!-- HEADER -->
+	<section class="section" style="padding-top: 140px;">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Voglans, Savoie</p>
+				<h1 class="section-title">Un cadre de vie d'exception</h1>
+				<p class="section-desc">
+					Entre lac et montagnes, à quelques minutes de tout.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ACCESSIBILITÉ -->
+	<section class="section" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="feature-icon">🏖️</div>
+					<h3 class="feature-title">3 min</h3>
+					<p class="feature-desc">Du Lac du Bourget, plages et port</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🏙️</div>
+					<h3 class="feature-title">7 min</h3>
+					<p class="feature-desc">De Chambéry centre-ville</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🚗</div>
+					<h3 class="feature-title">5 min</h3>
+					<p class="feature-desc">De l'autoroute A41</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">⛷️</div>
+					<h3 class="feature-title">30 min</h3>
+					<p class="feature-desc">Des stations de ski</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CARTE -->
+	<section class="section reveal">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Situation</p>
+				<h2 class="section-title">Où nous trouver</h2>
+				<p class="section-desc">Voglans, entre le Lac du Bourget et Chambéry</p>
+			</div>
+			<div class="map-container">
+				<iframe 
+					src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d158.25970479962888!2d5.8963601291434795!3d45.62990621475697!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2sfr!4v1770902057309!5m2!1sfr!2sfr"
+					width="100%" 
+					height="450" 
+					style="border:0; border-radius: 16px;" 
+					allowfullscreen="" 
+					loading="lazy" 
+					referrerpolicy="no-referrer-when-downgrade">
+				</iframe>
+			</div>
+			<div class="map-legend">
+				<div class="map-legend-item">
+					<span class="map-legend-dot" style="background: #3b82f6;"></span>
+					<span>Lac du Bourget — 3 min</span>
+				</div>
+				<div class="map-legend-item">
+					<span class="map-legend-dot" style="background: #10b981;"></span>
+					<span>Chambéry — 7 min</span>
+				</div>
+				<div class="map-legend-item">
+					<span class="map-legend-dot" style="background: #f59e0b;"></span>
+					<span>Aix-les-Bains — 10 min</span>
+				</div>
+				<div class="map-legend-item">
+					<span class="map-legend-dot" style="background: #ef4444;"></span>
+					<span>Stations de ski — 30 min</span>
+				</div>
+			</div>
+			<div class="map-address">
+				<p class="section-eyebrow">Adresse exacte</p>
+				<h3>93 chemin de la Combe<br />73420 Voglans</h3>
+			</div>
+		</div>
+	</section>
+
+	<!-- GALERIE -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Les environs</p>
+				<h2 class="section-title">Découvrez le cadre</h2>
+			</div>
+			<GalleryDisplay collection="localisation" />
+		</div>
+	</section>
+
+	<!-- CONTACT -->
+	<section class="section">
+		<div class="container-narrow">
+			<div class="contact-section">
+				<p class="section-eyebrow">Des questions ?</p>
+				<h2 class="section-title">Parlons du quartier</h2>
+				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-note">
+					Nous serons ravis de vous parler de notre vie quotidienne ici.
+				</p>
+			</div>
+		</div>
+	</section>
+</MainLayout>

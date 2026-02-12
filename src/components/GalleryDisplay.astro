@@ -1,0 +1,44 @@
+---
+import PhotoGrid from './PhotoGrid.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+import * as yaml from 'js-yaml';
+import type { GalleryData } from '../data/galleryData';
+
+interface Props {
+	collection: string;
+}
+
+const { collection } = Astro.props;
+
+const galleryPath = path.resolve('src/gallery/gallery.yaml');
+let gallery: GalleryData = { collections: [], images: [] };
+try {
+	const content = fs.readFileSync(galleryPath, 'utf8');
+	gallery = yaml.load(content) as GalleryData;
+} catch {
+	// Handle error silently
+}
+const images = gallery.images.filter(img => img.meta.collections.includes(collection));
+
+const modules = import.meta.glob('../gallery/**/*.jpg', { eager: true });
+const modulesJpeg = import.meta.glob('../gallery/**/*.jpeg', { eager: true });
+
+const allModules = { ...modules, ...modulesJpeg } as Record<string, { default: any }>;
+
+const processedImages = images.map((img) => {
+	const moduleKey = `../gallery/${img.path}`;
+	const module = allModules[moduleKey];
+	if (!module) {
+		return null;
+	}
+	return {
+		src: module.default,
+		title: img.meta.title,
+		description: img.meta.description,
+		collections: img.meta.collections,
+	};
+}).filter((img): img is { src: any; title: string; description: string; collections: string[] } => img !== null);
+---
+
+<PhotoGrid images={processedImages} />

@@ -1,0 +1,95 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GalleryDisplay from '../components/GalleryDisplay.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<MainLayout>
+	<!-- HEADER -->
+	<section class="section" style="padding-top: 140px;">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Terrasses, Piscine & Jardin</p>
+				<h1 class="section-title">Les extérieurs</h1>
+				<p class="section-desc">
+					3 terrasses aux expositions variées, piscine au sel chauffée et jardin agréable.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- TERRASSES -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">3 espaces extérieurs</p>
+				<h2 class="section-title">Les terrasses</h2>
+			</div>
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="sun" size={28} /></div>
+					<h3 class="feature-title">Terrasse carrelée plein Sud</h3>
+					<p class="feature-desc">Sur plots, idéale pour les repas en plein air avec vue sur les montagnes</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="pool" size={28} /></div>
+					<h3 class="feature-title">Terrasse exotique avec piscine</h3>
+					<p class="feature-desc">Bois exotique, piscine au sel chauffée par pompe à chaleur</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="mountain" size={28} /></div>
+					<h3 class="feature-title">Terrasse Nord</h3>
+					<p class="feature-desc">Idéale en période estivale, accessible directement depuis le séjour</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- JARDIN & PISCINE -->
+	<section class="section reveal">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Détente</p>
+				<h2 class="section-title">Jardin & Piscine</h2>
+			</div>
+			<div class="features-grid" style="max-width: 800px; margin: 0 auto;">
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="swim" size={28} /></div>
+					<h3 class="feature-title">Piscine au sel chauffée</h3>
+					<p class="feature-desc">Chauffée par pompe à chaleur, eau douce et agréable, entretien simplifié</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="mountain" size={28} /></div>
+					<h3 class="feature-title">Jardin paysagé</h3>
+					<p class="feature-desc">Environ 150 m², agréable et facile d'entretien</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- GALERIE -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">En images</p>
+				<h2 class="section-title">Terrasses et piscine</h2>
+			</div>
+			<GalleryDisplay collection="landing" />
+		</div>
+	</section>
+
+	<!-- CONTACT -->
+	<section class="section reveal">
+		<div class="container-narrow">
+			<div class="contact-section">
+				<p class="section-eyebrow">Envie de soleil ?</p>
+				<h2 class="section-title">Venez voir par vous-même</h2>
+				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-note">
+					Une visite vaut mille photos.
+				</p>
+				<a href="/contact" class="btn btn-primary">Nous contacter</a>
+			</div>
+		</div>
+	</section>
+</MainLayout>

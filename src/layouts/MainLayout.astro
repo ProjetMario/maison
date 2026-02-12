@@ -1,0 +1,117 @@
+---
+import '../styles/modern.css';
+import siteConfig from '../../site.config.mjs';
+import Footer from '../components/Footer.astro';
+import NavBar from '../components/NavBar.astro';
+
+const title = siteConfig.title;
+const favicon = siteConfig.favicon;
+const base = import.meta.env.BASE_URL;
+---
+
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href={`${base}/${favicon}`} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content="Maison contemporaine avec vue panoramique sur le Lac du Bourget - Vente entre particuliers" />
+		
+		<!-- PWA Meta Tags -->
+		<link rel="manifest" href="/manifest.json" />
+		<meta name="theme-color" content="#d4a574" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-title" content="Maison Lac" />
+		<link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+		
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content="Maison contemporaine avec vue panoramique sur le Lac du Bourget - Vente entre particuliers" />
+		<meta property="og:locale" content="fr_FR" />
+	</head>
+	<body>
+		<NavBar />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+		
+		<!-- Bouton flottant Appeler -->
+		<a href="tel:+33606632442" class="floating-cta" aria-label="Appeler">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.49a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/>
+			</svg>
+			<span>Appeler</span>
+		</a>
+
+		<!-- Script animations au scroll -->
+		<script>
+			// Register Service Worker for PWA
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', () => {
+					navigator.serviceWorker.register('/sw.js')
+						.then((reg) => console.log('SW registered'))
+						.catch((err) => console.log('SW registration failed'));
+				});
+			}
+
+			document.addEventListener('DOMContentLoaded', () => {
+				// Reveal animations
+				const reveals = document.querySelectorAll('.reveal');
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('visible');
+						}
+					});
+				}, {
+					threshold: 0.1,
+					rootMargin: '0px 0px -50px 0px'
+				});
+				reveals.forEach(el => observer.observe(el));
+
+				// Parallax effect on hero
+				const heroBg = document.querySelector('.hero-bg img');
+				if (heroBg) {
+					window.addEventListener('scroll', () => {
+						const scrolled = window.pageYOffset;
+						const rate = scrolled * 0.4;
+						(heroBg as HTMLElement).style.transform = `translateY(${rate}px)`;
+					}, { passive: true });
+				}
+
+				// Animated counters
+				const counters = document.querySelectorAll('.counter');
+				const counterObserver = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							const target = entry.target as HTMLElement;
+							const finalValue = target.dataset.value || target.innerText;
+							const isNumber = /^\d+$/.test(finalValue.replace(/\s/g, ''));
+							
+							if (isNumber) {
+								const end = parseInt(finalValue.replace(/\s/g, ''));
+								let current = 0;
+								const increment = end / 50;
+								const timer = setInterval(() => {
+									current += increment;
+									if (current >= end) {
+										target.innerText = finalValue;
+										clearInterval(timer);
+									} else {
+										target.innerText = Math.floor(current).toString();
+									}
+								}, 30);
+							}
+							counterObserver.unobserve(target);
+						}
+					});
+				}, { threshold: 0.5 });
+				counters.forEach(el => counterObserver.observe(el));
+			});
+		</script>
+	</body>
+</html>

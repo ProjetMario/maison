@@ -1,0 +1,130 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GalleryDisplay from '../components/GalleryDisplay.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<MainLayout>
+	<!-- HEADER -->
+	<section class="section" style="padding-top: 140px;">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">130 m² habitables • Construite en 2020</p>
+				<h1 class="section-title">Explorer la maison</h1>
+				<p class="section-desc">
+					Duplex inversé offrant un espace de vie tourné vers la vue. 
+					Maison lumineuse et fonctionnelle, aux prestations modernes et soignées.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- NIVEAUX -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+				<div class="feature-card">
+					<h3 class="feature-title" style="margin-bottom: 1.5rem;">À l'étage — Espace de vie</h3>
+					<ul style="list-style: none; padding: 0; margin: 0;">
+						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">Hall d'entrée</li>
+						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">WC avec lave-mains</li>
+						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">Cuisine équipée et aménagée, ouverte</li>
+						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">Grand séjour climatisé, très lumineux</li>
+						<li style="padding: 0.75rem 0; color: var(--text-secondary);">Accès direct au jardin (~150 m²) et aux terrasses avec vue lac</li>
+					</ul>
+				</div>
+				<div class="feature-card">
+					<h3 class="feature-title" style="margin-bottom: 1.5rem;">En rez-de-chaussée — Espace nuit</h3>
+					<ul style="list-style: none; padding: 0; margin: 0;">
+						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">Couloir desservant les espaces nuit</li>
+						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">Buanderie</li>
+						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">Salle d'eau avec douche et baignoire</li>
+						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">WC séparé</li>
+						<li style="padding: 0.75rem 0; color: var(--text-secondary);">3 chambres, dont une suite parentale avec dressing et salle d'eau privative</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ÉQUIPEMENTS -->
+	<section class="section reveal">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Confort & équipements</p>
+				<h2 class="section-title">Prestations de qualité</h2>
+				<p class="section-desc">Maison récente, aucun travaux à prévoir.</p>
+			</div>
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="fire" size={28} /></div>
+					<h3 class="feature-title">Chauffage au sol</h3>
+					<p class="feature-desc">Par pompe à chaleur, confort optimal toute l'année</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="snowflake" size={28} /></div>
+					<h3 class="feature-title">Climatisation</h3>
+					<p class="feature-desc">Dans le séjour pour les étés chauds</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="window" size={28} /></div>
+					<h3 class="feature-title">Normes RT 2012</h3>
+					<p class="feature-desc">Maison très économe en énergie</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="home" size={28} /></div>
+					<h3 class="feature-title">Maison récente</h3>
+					<p class="feature-desc">Construite en 2020, aucun travaux à prévoir</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ANNEXES -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Annexes</p>
+				<h2 class="section-title">Stationnement</h2>
+			</div>
+			<div class="features-grid" style="max-width: 600px; margin: 0 auto;">
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="car" size={28} /></div>
+					<h3 class="feature-title">Garage double</h3>
+					<p class="feature-desc">Grand garage pour deux véhicules</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="car" size={28} /></div>
+					<h3 class="feature-title">Stationnements</h3>
+					<p class="feature-desc">Places couvertes et extérieures supplémentaires</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- GALERIE -->
+	<section class="section reveal">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Visite virtuelle</p>
+				<h2 class="section-title">Les intérieurs en images</h2>
+			</div>
+			<GalleryDisplay collection="interieur" />
+		</div>
+	</section>
+
+	<!-- CONTACT -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-narrow">
+			<div class="contact-section">
+				<p class="section-eyebrow">Envie de voir ?</p>
+				<h2 class="section-title">Organisons une visite</h2>
+				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-note">
+					Nous organisons les visites selon vos disponibilités.
+				</p>
+				<a href="/contact" class="btn btn-primary">Nous contacter</a>
+			</div>
+		</div>
+	</section>
+</MainLayout>

@@ -1,0 +1,180 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GalleryDisplay from '../components/GalleryDisplay.astro';
+import HeroCarousel from '../components/HeroCarousel.astro';
+import Icon from '../components/Icon.astro';
+import heroCover from '../gallery/landing/VUE LANDINGG.jpeg';
+import heroImg2 from '../gallery/landing/LANDING 2.jpg';
+import heroImg4 from '../gallery/landing/LANDING 4.jpg';
+
+const heroImages = [
+	{ src: heroCover, alt: 'Vue sur la maison depuis la terrasse' },
+	{ src: heroImg2, alt: 'Terrasse avec vue panoramique' },
+	{ src: heroImg4, alt: 'Piscine et jardin' },
+];
+---
+
+<MainLayout>
+	<!-- HERO CARROUSEL PLEIN ÉCRAN -->
+	<section class="hero-fullscreen" style="position: relative;">
+		<HeroCarousel images={heroImages} interval={6000} />
+		<div class="hero-content animate-in" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 20;">
+			<span class="hero-badge">Vente entre particuliers</span>
+			<h1 class="hero-title">Vue panoramique</h1>
+			<p class="hero-subtitle">
+				Maison contemporaine en duplex inversé avec vue sur la Dent du Chat et le Lac du Bourget. 
+				Quartier résidentiel, à Voglans, entre Aix-les-Bains et Chambéry.
+			</p>
+			<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+				<a href="/contact" class="btn btn-primary">Planifier une visite</a>
+				<a href="/description" class="btn btn-outline">Explorer la maison</a>
+			</div>
+			<div class="hero-stats">
+				<div class="hero-stat">
+					<div class="hero-stat-value">130 m²</div>
+					<div class="hero-stat-label">Surface</div>
+				</div>
+				<div class="hero-stat">
+					<div class="hero-stat-value">4</div>
+					<div class="hero-stat-label">Chambres</div>
+				</div>
+				<div class="hero-stat">
+					<div class="hero-stat-value">2020</div>
+					<div class="hero-stat-label">Construction</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION POINTS FORTS -->
+	<section class="section reveal">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Pourquoi cette maison</p>
+				<h2 class="section-title">Les atouts majeurs</h2>
+				<p class="section-desc">
+					Une maison pensée pour le confort et la qualité de vie.
+				</p>
+			</div>
+			
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="view" size={28} /></div>
+					<h3 class="feature-title">Vue lac et montagnes</h3>
+					<p class="feature-desc">
+						Vue imprenable sur le Lac du Bourget et la Dent du Chat depuis l'espace de vie.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="pool" size={28} /></div>
+					<h3 class="feature-title">Piscine au sel chauffée</h3>
+					<p class="feature-desc">
+						Piscine chauffée par pompe à chaleur, terrasse en bois exotique plein sud.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="sun" size={28} /></div>
+					<h3 class="feature-title">3 terrasses</h3>
+					<p class="feature-desc">
+						Expositions variées : plein sud, terrasse exotique et terrasse nord pour l'été.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="thermometer" size={28} /></div>
+					<h3 class="feature-title">RT 2012</h3>
+					<p class="feature-desc">
+						Chauffage au sol par pompe à chaleur, climatisation séjour, très économe.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="home" size={28} /></div>
+					<h3 class="feature-title">Maison lumineuse</h3>
+					<p class="feature-desc">
+						Duplex inversé fonctionnel, espace de vie à l'étage tourné vers l'extérieur.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon"><Icon name="car" size={28} /></div>
+					<h3 class="feature-title">Garage double</h3>
+					<p class="feature-desc">
+						Garage double + stationnements couverts et extérieurs.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION NOTRE VIE ICI -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Lifestyle</p>
+				<h2 class="section-title">Notre vie ici</h2>
+				<p class="section-desc">
+					Ce que nous aimons dans notre quotidien à Voglans.
+				</p>
+			</div>
+			
+			<div class="lifestyle-grid">
+				<div class="lifestyle-card">
+					<div class="lifestyle-icon"><Icon name="coffee" size={32} /></div>
+					<h3 class="lifestyle-title">Café face au lac</h3>
+					<p class="lifestyle-desc">
+						Chaque matin, le soleil se lève sur le lac. Un moment de calme absolu pour commencer la journée.
+					</p>
+				</div>
+				<div class="lifestyle-card">
+					<div class="lifestyle-icon"><Icon name="swim" size={32} /></div>
+					<h3 class="lifestyle-title">Baignade à 3 min</h3>
+					<p class="lifestyle-desc">
+						L'été, on file à la plage du Mottet en quelques minutes. Eau cristalline, montagnes en toile de fond.
+					</p>
+				</div>
+				<div class="lifestyle-card">
+					<div class="lifestyle-icon"><Icon name="ski" size={32} /></div>
+					<h3 class="lifestyle-title">Ski le week-end</h3>
+					<p class="lifestyle-desc">
+						Le Revard et La Féclaz à 30 minutes. On part skier le matin et on rentre bronzé l'après-midi.
+					</p>
+				</div>
+				<div class="lifestyle-card">
+					<div class="lifestyle-icon"><Icon name="sunset" size={32} /></div>
+					<h3 class="lifestyle-title">Apéros en terrasse</h3>
+					<p class="lifestyle-desc">
+						Les soirées d'été sur la terrasse, pieds dans la piscine, avec le coucher de soleil sur les montagnes.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- GALERIE PHOTOS -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Galerie</p>
+				<h2 class="section-title">Découvrez en images</h2>
+				<p class="section-desc">
+					Quelques aperçus pour vous immerger dans l'ambiance avant votre visite.
+				</p>
+			</div>
+			
+			<GalleryDisplay collection="landing" />
+		</div>
+	</section>
+
+	<!-- CONTACT -->
+	<section class="section reveal">
+		<div class="container-narrow">
+			<div class="contact-section">
+				<p class="section-eyebrow">Intéressé ?</p>
+				<h2 class="section-title">Organisons une visite</h2>
+				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-note">
+					Nous sommes des particuliers et serons ravis de vous faire découvrir notre maison.
+				</p>
+				<a href="/contact" class="btn btn-primary">Nous contacter</a>
+			</div>
+		</div>
+	</section>
+</MainLayout>

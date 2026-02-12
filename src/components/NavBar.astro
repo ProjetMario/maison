@@ -1,0 +1,31 @@
+---
+import siteConfig from '../../site.config.mjs';
+
+const title = siteConfig.title;
+
+const base = import.meta.env.BASE_URL || '/';
+const cleanBase = base === '/' ? '' : base.replace(/\/$/, '');
+const buildLink = (path: string) => {
+	if (!path) return cleanBase || '/';
+	return cleanBase ? `${cleanBase}/${path}` : `/${path}`;
+};
+
+const menuItems = [
+	{ name: 'Localisation', link: buildLink('localisation') },
+	{ name: 'Intérieurs', link: buildLink('description') },
+	{ name: 'Extérieurs', link: buildLink('les-exterieurs') },
+	{ name: 'Points clés', link: buildLink('les-points-forts-faibles') },
+	{ name: 'Contact', link: buildLink('contact') },
+];
+---
+
+<nav class="nav-modern">
+	<div class="container-modern">
+		<a href={base} class="nav-logo">{title}</a>
+		<ul class="nav-links">
+			{menuItems.map((item) => (
+				<li><a href={item.link}>{item.name}</a></li>
+			))}
+		</ul>
+	</div>
+</nav>

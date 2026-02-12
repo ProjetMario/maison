@@ -1,0 +1,47 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GalleryDisplay from '../components/GalleryDisplay.astro';
+---
+
+<MainLayout>
+	<!-- HEADER -->
+	<section class="section" style="padding-top: 140px;">
+		<div class="container-narrow">
+			<div class="section-header">
+				<p class="section-eyebrow">Visite virtuelle</p>
+				<h1 class="section-title">Vidéos</h1>
+				<p class="section-desc">
+					Bientôt disponible.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- CONTENU -->
+	<section class="section">
+		<div class="container-narrow">
+			<div class="contact-section">
+				<p class="section-eyebrow">En préparation</p>
+				<h2 class="section-title">Vidéos à venir</h2>
+				<p class="contact-note">
+					Nous préparons des vidéos pour vous permettre de découvrir notre maison 
+					de manière plus immersive. En attendant, rien ne remplace une vraie visite.
+				</p>
+				<p class="contact-phone">06 06 63 24 42</p>
+				<a href="/contact" class="btn btn-primary" style="margin-top: 1.5rem;">Organiser une visite</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- GALERIE -->
+	<section class="section" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">En attendant</p>
+				<h2 class="section-title">Immergez-vous en photos</h2>
+				<p class="section-desc">Une sélection d'images en attendant les vidéos.</p>
+			</div>
+			<GalleryDisplay collection="landing" />
+		</div>
+	</section>
+</MainLayout>

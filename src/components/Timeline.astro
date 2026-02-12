@@ -1,0 +1,202 @@
+---
+import Icon from './Icon.astro';
+
+interface TimelineItem {
+	time: string;
+	title: string;
+	description: string;
+	icon: string;
+}
+
+interface Props {
+	items?: TimelineItem[];
+}
+
+const defaultItems: TimelineItem[] = [
+	{
+		time: '7h00',
+		title: 'Réveil face au lac',
+		description: 'Le soleil se lève sur le Lac du Bourget. Café en terrasse avec vue sur les montagnes.',
+		icon: 'coffee'
+	},
+	{
+		time: '9h00',
+		title: 'Baignade matinale',
+		description: 'Direction la plage du Bourget à 3 minutes. Eau cristalline et calme absolu.',
+		icon: 'swim'
+	},
+	{
+		time: '12h00',
+		title: 'Déjeuner au bord du lac',
+		description: 'Les restaurants du port offrent une cuisine locale avec vue imprenable.',
+		icon: 'sun'
+	},
+	{
+		time: '15h00',
+		title: 'Détente à la piscine',
+		description: 'Retour à la maison pour profiter de la piscine chauffée plein sud.',
+		icon: 'pool'
+	},
+	{
+		time: '18h00',
+		title: 'Randonnée au Revard',
+		description: 'À 30 minutes, les sentiers du Revard offrent des panoramas exceptionnels.',
+		icon: 'mountain'
+	},
+	{
+		time: '20h00',
+		title: 'Apéro coucher de soleil',
+		description: 'Sur la terrasse, le soleil se couche derrière la Dent du Chat. Moment magique.',
+		icon: 'sunset'
+	}
+];
+
+const { items = defaultItems } = Astro.props;
+---
+
+<div class="timeline">
+	<div class="timeline-line"></div>
+	{items.map((item, index) => (
+		<div class="timeline-item reveal" style={`--delay: ${index * 0.1}s`}>
+			<div class="timeline-marker">
+				<div class="timeline-icon">
+					<Icon name={item.icon} size={20} />
+				</div>
+			</div>
+			<div class="timeline-content">
+				<span class="timeline-time">{item.time}</span>
+				<h3 class="timeline-title">{item.title}</h3>
+				<p class="timeline-desc">{item.description}</p>
+			</div>
+		</div>
+	))}
+</div>
+
+<style>
+	.timeline {
+		position: relative;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem 0;
+	}
+
+	.timeline-line {
+		position: absolute;
+		left: 24px;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: linear-gradient(to bottom, transparent, var(--accent, #d4a574), transparent);
+	}
+
+	.timeline-item {
+		display: flex;
+		gap: 2rem;
+		margin-bottom: 3rem;
+		position: relative;
+		transition-delay: var(--delay);
+	}
+
+	.timeline-item:last-child {
+		margin-bottom: 0;
+	}
+
+	.timeline-marker {
+		flex-shrink: 0;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		z-index: 1;
+	}
+
+	.timeline-icon {
+		width: 50px;
+		height: 50px;
+		background: var(--bg-elevated, #1a1a1d);
+		border: 2px solid var(--accent, #d4a574);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--accent, #d4a574);
+		transition: all 0.3s ease;
+	}
+
+	.timeline-item:hover .timeline-icon {
+		background: var(--accent, #d4a574);
+		color: var(--bg-dark, #0a0a0b);
+		transform: scale(1.1);
+	}
+
+	.timeline-content {
+		flex: 1;
+		background: var(--bg-card, #111113);
+		border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+		border-radius: 16px;
+		padding: 1.5rem;
+		transition: all 0.3s ease;
+	}
+
+	.timeline-item:hover .timeline-content {
+		border-color: rgba(212, 165, 116, 0.3);
+		transform: translateX(8px);
+	}
+
+	.timeline-time {
+		display: inline-block;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--accent, #d4a574);
+		background: rgba(212, 165, 116, 0.1);
+		padding: 0.25rem 0.75rem;
+		border-radius: 100px;
+		margin-bottom: 0.75rem;
+	}
+
+	.timeline-title {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--text-primary, #ffffff);
+		margin-bottom: 0.5rem;
+	}
+
+	.timeline-desc {
+		color: var(--text-secondary, #a1a1aa);
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	@media (max-width: 640px) {
+		.timeline-line {
+			left: 20px;
+		}
+
+		.timeline-marker {
+			width: 40px;
+			height: 40px;
+		}
+
+		.timeline-icon {
+			width: 40px;
+			height: 40px;
+		}
+
+		.timeline-item {
+			gap: 1rem;
+		}
+
+		.timeline-content {
+			padding: 1rem;
+		}
+
+		.timeline-title {
+			font-size: 1.1rem;
+		}
+	}
+</style>

@@ -1,0 +1,51 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GalleryDisplay from '../components/GalleryDisplay.astro';
+---
+
+<MainLayout>
+	<!-- HEADER -->
+	<section class="section" style="padding-top: 140px;">
+		<div class="container-narrow">
+			<div class="section-header">
+				<p class="section-eyebrow">Vente directe</p>
+				<h1 class="section-title">Nous contacter</h1>
+				<p class="section-desc">
+					Vente entre particuliers, sans intermédiaire.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- GALERIE -->
+	<section class="section" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Quelques images</p>
+				<h2 class="section-title">Ambiance de la maison</h2>
+				<p class="section-desc">Avant d'échanger, découvrez quelques photos coup de cœur.</p>
+			</div>
+			<GalleryDisplay collection="landing" />
+		</div>
+	</section>
+
+	<!-- CONTACT -->
+	<section class="section">
+		<div class="container-narrow">
+			<div style="background: #111113; border-radius: 24px; padding: clamp(3rem, 6vw, 5rem); text-align: center; border: 1px solid rgba(255,255,255,0.08);">
+				<p style="font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: #d4a574; margin-bottom: 1rem;">Téléphone</p>
+				<p style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; color: #d4a574; margin: 1.5rem 0;">06 06 63 24 42</p>
+				<p style="color: #a1a1aa; max-width: 500px; margin: 0 auto 2rem; font-size: 1.125rem; line-height: 1.7;">
+					Nous sommes des particuliers et serons ravis de répondre à vos questions 
+					et d'organiser une visite selon vos disponibilités.
+				</p>
+				<div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08);">
+					<p style="font-size: 0.875rem; color: #71717a;">
+						Merci de noter que cette vente se fait exclusivement entre particuliers.<br>
+						Agences immobilières et mandataires, merci de ne pas nous contacter.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</MainLayout>
