@@ -1,7 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import MainLayout from '../layouts/MainLayout.astro';
 import GalleryDisplay from '../components/GalleryDisplay.astro';
 import Icon from '../components/Icon.astro';
+import terrasseSudImg from '../gallery/description-des-pieces/TERASSE SUD.jpg';
+import terrassePiscineImg from '../gallery/description-des-pieces/PISICINE.jpg';
+import terrasseNordImg from '../gallery/description-des-pieces/nord principale.jpg';
 ---
 
 <MainLayout>
@@ -29,17 +33,53 @@ import Icon from '../components/Icon.astro';
 				<div class="feature-card">
 					<div class="feature-icon"><Icon name="sun" size={28} /></div>
 					<h3 class="feature-title">Terrasse carrelée plein Sud</h3>
-					<p class="feature-desc">Sur plots, idéale pour les repas en plein air avec vue sur les montagnes</p>
+					<p class="feature-desc">Petit coin détente en été avec vue sur les montagnes.</p>
+					<div class="feature-media">
+						<Image
+							src={terrasseSudImg}
+							widths={[480, 720, 960]}
+							sizes="(max-width: 768px) 100vw, 320px"
+							quality={75}
+							format="avif"
+							alt="Terrasse sud carrelée"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
 				</div>
 				<div class="feature-card">
 					<div class="feature-icon"><Icon name="pool" size={28} /></div>
 					<h3 class="feature-title">Terrasse exotique avec piscine</h3>
 					<p class="feature-desc">Bois exotique, piscine au sel chauffée par pompe à chaleur</p>
+					<div class="feature-media">
+						<Image
+							src={terrassePiscineImg}
+							widths={[480, 720, 960]}
+							sizes="(max-width: 768px) 100vw, 320px"
+							quality={75}
+							format="avif"
+							alt="Terrasse exotique avec piscine"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
 				</div>
 				<div class="feature-card">
 					<div class="feature-icon"><Icon name="mountain" size={28} /></div>
 					<h3 class="feature-title">Terrasse Nord</h3>
 					<p class="feature-desc">Idéale en période estivale, accessible directement depuis le séjour</p>
+					<div class="feature-media">
+						<Image
+							src={terrasseNordImg}
+							widths={[480, 720, 960]}
+							sizes="(max-width: 768px) 100vw, 320px"
+							quality={75}
+							format="avif"
+							alt="Terrasse côté nord"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -74,7 +114,7 @@ import Icon from '../components/Icon.astro';
 				<p class="section-eyebrow">En images</p>
 				<h2 class="section-title">Terrasses et piscine</h2>
 			</div>
-			<GalleryDisplay collection="landing" />
+			<GalleryDisplay collection="exterieur" />
 		</div>
 	</section>
 

@@ -16,90 +16,39 @@ collections:
   - id: localisation
     name: Localisation
 images:
-  - path: description-des-pieces/VUE TERASSE PISCINE.jpg
+  # --- Landing gallery (bottom of homepage) ---
+  - path: landing/LANDING 3.jpeg
     meta:
-      title: Vue terrasse et piscine
-      description: Perspective depuis la terrasse principale vers la piscine.
+      title: Vue Landing 3
+      description: Photo panoramique initiale de la maison avec vue dégagée.
       collections:
         - landing
-        - exterieur
     exif: {}
-  - path: description-des-pieces/TERASSE SUD.jpg
+  - path: landing/LANDING 4.jpeg
     meta:
-      title: Terrasse sud
-      description: Coin repas au soleil avec vue dégagée.
+      title: Vue Landing 4 (JPEG)
+      description: Photo originale utilisée pour la landing, avec vue panoramique sur la maison.
       collections:
         - landing
-        - exterieur
     exif: {}
-  - path: description-des-pieces/PSICINE 1.jpg
+  - path: landing/LANDING 4.jpg
     meta:
-      title: Piscine 1
-      description: Bassin entouré de terrasses en bois.
+      title: Vue Landing 4 (JPG)
+      description: Variante haute définition de la photo Landing 4.
       collections:
         - landing
-        - exterieur
     exif: {}
-  - path: description-des-pieces/PISICINE.jpg
+  - path: landing/LANDING.jpg
     meta:
-      title: Piscine crépuscule
-      description: Éclairage du soir sur la piscine et les plages.
+      title: Vue Landing historique
+      description: L'un des premiers clichés de présentation de la maison.
       collections:
         - landing
-        - exterieur
-    exif: {}
-  - path: description-des-pieces/IMG_5419.jpg
-    meta:
-      title: Terrasse surélevée
-      description: Terrasse bois avec garde-corps vitrés.
-      collections:
-        - landing
-        - exterieur
     exif: {}
   - path: description-des-pieces/JARDIN 1.jpg
     meta:
       title: Jardin paysagé
       description: Jardin arboré jouxtant la piscine.
-      collections:
-        - landing
-        - exterieur
-    exif: {}
-  - path: description-des-pieces/JARDIN.jpg
-    meta:
-      title: Jardin et terrasse principale
-      description: Vue sur le jardin paysager et la terrasse couverte.
-      collections:
-        - landing
-        - exterieur
-    exif: {}
-  - path: description-des-pieces/PISCINE 3.jpg
-    meta:
-      title: Piscine 3
-      description: Piscine entourée d'un deck avec vue dégagée.
-      collections:
-        - landing
-        - exterieur
-    exif: {}
-  - path: description-des-pieces/nord principale.jpg
-    meta:
-      title: Terrasse nord principale
-      description: Grande terrasse couverte côté nord reliant cuisine et séjour.
-      collections:
-        - landing
-        - exterieur
-    exif: {}
-  - path: description-des-pieces/nord.jpg
-    meta:
-      title: Terrasse nord
-      description: Espace frais pour les après-midis d'été avec vue montagne.
-      collections:
-        - landing
-        - exterieur
-    exif: {}
-  - path: description-des-pieces/nord 1.jpg
-    meta:
-      title: Façade nord
-      description: Détail de la façade nord et des accès stationnement.
       collections:
         - landing
         - exterieur
@@ -112,12 +61,233 @@ images:
         - landing
         - exterieur
     exif: {}
+  - path: description-des-pieces/PISICINE.jpg
+    meta:
+      title: Piscine crépuscule
+      description: Éclairage du soir sur la piscine et les plages.
+      collections:
+        - landing
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/SEJOUR 3.jpg
+    meta:
+      title: Séjour niveau haut
+      description: Pièce de vie principale baignée de lumière.
+      collections:
+        - landing
+        - interieur
+    exif: {}
+  - path: description-des-pieces/SEJOUR PRINCIPALE.jpg
+    meta:
+      title: Séjour principal
+      description: Perspective frontale du séjour et de la terrasse.
+      collections:
+        - landing
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 2.jpeg
+    meta:
+      title: Vue des pièces 2
+      description: Enfilade lumineuse sur l'espace de vie.
+      collections:
+        - landing
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 3.jpeg
+    meta:
+      title: Vue des pièces 3
+      description: Perspective depuis le séjour vers la cuisine.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 4.jpeg
+    meta:
+      title: Vue des pièces 4
+      description: Coin salon ouvert sur la terrasse sud.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 5.jpeg
+    meta:
+      title: Vue des pièces 5
+      description: Coin repas avec ouverture sur la terrasse.
+      collections:
+        - landing
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 6.jpeg
+    meta:
+      title: Vue des pièces 6
+      description: Détail du séjour et de la cuisine.
+      collections:
+        - landing
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 7.jpeg
+    meta:
+      title: Vue des pièces 7
+      description: Salle à manger baignée de lumière.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 8.jpeg
+    meta:
+      title: Vue des pièces 8
+      description: Vue traversante sur le séjour.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 9.jpeg
+    meta:
+      title: Vue des pièces 9
+      description: Cuisine ouverte sur la pièce de vie.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 10.jpeg
+    meta:
+      title: Vue des pièces 10
+      description: Détail du plan de travail et des rangements.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 11.jpeg
+    meta:
+      title: Vue des pièces 11
+      description: Espace lecture et salon cosy.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 12.jpeg
+    meta:
+      title: Vue des pièces 12
+      description: Perspective sur l'escalier intérieur.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 13.jpeg
+    meta:
+      title: Vue des pièces 13
+      description: Ambiance chaleureuse dans la pièce de vie.
+      collections:
+        - landing
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 14.jpeg
+    meta:
+      title: Vue des pièces 14
+      description: Suite parentale avec accès extérieur.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 15.jpeg
+    meta:
+      title: Vue des pièces 15
+      description: Chambre d'amis lumineuse.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES 16.jpeg
+    meta:
+      title: Vue des pièces 16
+      description: Salle d'eau moderne avec douche italienne.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES.jpg
+    meta:
+      title: Vue des pièces
+      description: Vue générale intérieure.
+      collections:
+        - landing
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE DES PIECES.jpeg
+    meta:
+      title: Vue des pièces (portrait)
+      description: Variation portrait de la pièce principale.
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/VUE ESCALIER.jpg
+    meta:
+      title: Vue escalier
+      description: Escalier desservant les deux niveaux de la maison.
+      collections:
+        - landing
+        - interieur
+    exif: {}
+
+  # --- Autres visuels utilisés sur les pages intérieures / extérieures ---
+  - path: description-des-pieces/VUE TERASSE PISCINE.jpg
+    meta:
+      title: Vue terrasse et piscine
+      description: Perspective depuis la terrasse principale vers la piscine.
+      collections:
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/TERASSE SUD.jpg
+    meta:
+      title: Terrasse sud
+      description: Coin repas au soleil avec vue dégagée.
+      collections:
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/PSICINE 1.jpg
+    meta:
+      title: Piscine 1
+      description: Bassin entouré de terrasses en bois.
+      collections:
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/nord principale.jpg
+    meta:
+      title: Terrasse surélevée
+      description: Terrasse bois avec garde-corps vitrés.
+      collections:
+        - landing
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/JARDIN.jpg
+    meta:
+      title: Jardin et terrasse principale
+      description: Vue sur le jardin paysager et la terrasse couverte.
+      collections:
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/PISCINE 3.jpg
+    meta:
+      title: Piscine 3
+      description: Piscine entourée d'un deck avec vue dégagée.
+      collections:
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/IMG_5419.jpg
+    meta:
+      title: Terrasse nord principale
+      description: Grande terrasse couverte côté nord reliant cuisine et séjour.
+      collections:
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/nord.jpg
+    meta:
+      title: Terrasse nord
+      description: Espace frais pour les après-midis d'été avec vue montagne.
+      collections:
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/nord 1.jpg
+    meta:
+      title: Façade nord
+      description: Détail de la façade nord et des accès stationnement.
+      collections:
+        - exterieur
+    exif: {}
   - path: description-des-pieces/PHOTOS EXT 1.jpeg
     meta:
       title: Allée paysagée
       description: Cheminement végétalisé menant à la maison.
       collections:
-        - landing
         - exterieur
     exif: {}
   - path: description-des-pieces/ALLE DE LA MAISON.jpg
@@ -125,7 +295,6 @@ images:
       title: Allée de la maison
       description: Allée carrossable bordée d'arbustes.
       collections:
-        - landing
         - exterieur
     exif: {}
   - path: description-des-pieces/ENTRAIN MAISON.jpg
@@ -133,7 +302,6 @@ images:
       title: Entrée maison (photo)
       description: Entrée principale vue depuis le portail.
       collections:
-        - landing
         - exterieur
     exif: {}
   - path: description-des-pieces/ENTREE MAISON PRINCIPALE.jpg
@@ -141,13 +309,11 @@ images:
       title: Entrée principale
       description: Perspective frontale sur la porte d'entrée.
       collections:
-        - landing
         - exterieur
     exif: {}
   - path: landing/image.jpg
     meta:
       title: Hero extérieur
       description: Photo large pour l'en-tête du site.
-      collections:
-        - landing
+      collections: []
     exif: {}

@@ -33,6 +33,10 @@ const base = import.meta.env.BASE_URL;
 		<meta property="og:locale" content="fr_FR" />
 	</head>
 	<body>
+		<!-- Scroll Progress Bar -->
+		<div class="scroll-progress" id="scrollProgress"></div>
+		<!-- Cursor Glow -->
+		<div class="cursor-glow" id="cursorGlow"></div>
 		<NavBar />
 		<main>
 			<slot />
@@ -83,6 +87,17 @@ const base = import.meta.env.BASE_URL;
 					}, { passive: true });
 				}
 
+				// Scroll progress bar
+				const scrollProgress = document.getElementById('scrollProgress');
+				if (scrollProgress) {
+					window.addEventListener('scroll', () => {
+						const scrollTop = window.scrollY;
+						const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+						const scrollPercent = (scrollTop / docHeight) * 100;
+						scrollProgress.style.width = scrollPercent + '%';
+					}, { passive: true });
+				}
+
 				// Animated counters
 				const counters = document.querySelectorAll('.counter');
 				const counterObserver = new IntersectionObserver((entries) => {
@@ -111,6 +126,30 @@ const base = import.meta.env.BASE_URL;
 					});
 				}, { threshold: 0.5 });
 				counters.forEach(el => counterObserver.observe(el));
+
+				// Cursor glow effect
+				const cursorGlow = document.getElementById('cursorGlow');
+				if (cursorGlow && window.innerWidth > 768) {
+					document.addEventListener('mousemove', (e) => {
+						cursorGlow.style.left = e.clientX + 'px';
+						cursorGlow.style.top = e.clientY + 'px';
+						cursorGlow.classList.add('active');
+					});
+					document.addEventListener('mouseleave', () => {
+						cursorGlow.classList.remove('active');
+					});
+				}
+
+				// Text reveal animations
+				const textReveals = document.querySelectorAll('.text-reveal, .text-reveal-stagger');
+				const textObserver = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('visible');
+						}
+					});
+				}, { threshold: 0.2 });
+				textReveals.forEach(el => textObserver.observe(el));
 			});
 		</script>
 	</body>
