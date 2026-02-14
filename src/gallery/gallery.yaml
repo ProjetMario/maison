@@ -20,35 +20,35 @@ images:
   - path: landing/LANDING 3.jpeg
     meta:
       title: Vue Landing 3
-      description: Photo panoramique initiale de la maison avec vue dégagée.
+      description: Entrée de la maison avant travaux.
       collections:
         - landing
     exif: {}
   - path: landing/LANDING 4.jpeg
     meta:
       title: Vue Landing 4 (JPEG)
-      description: Photo originale utilisée pour la landing, avec vue panoramique sur la maison.
+      description: séjour avec le terasse principale au nord !
       collections:
         - landing
     exif: {}
   - path: landing/LANDING 4.jpg
     meta:
       title: Vue Landing 4 (JPG)
-      description: Variante haute définition de la photo Landing 4.
+      description: Vue sur la piscine depuis le séjour
       collections:
         - landing
     exif: {}
   - path: landing/LANDING.jpg
     meta:
       title: Vue Landing historique
-      description: L'un des premiers clichés de présentation de la maison.
+      description: balcon depuis le séjour
       collections:
         - landing
     exif: {}
   - path: description-des-pieces/JARDIN 1.jpg
     meta:
       title: Jardin paysagé
-      description: Jardin arboré jouxtant la piscine.
+      description: Jardin de 150m2, facile d'entretien
       collections:
         - landing
         - exterieur
@@ -56,7 +56,7 @@ images:
   - path: description-des-pieces/PHOTO EXT.jpeg
     meta:
       title: Façade principale
-      description: Vue d'ensemble de la maison côté entrée.
+      description: Terasse depuis le séjour avec Vue lac et Montagnes
       collections:
         - landing
         - exterieur
@@ -64,7 +64,7 @@ images:
   - path: description-des-pieces/PISICINE.jpg
     meta:
       title: Piscine crépuscule
-      description: Éclairage du soir sur la piscine et les plages.
+      description: Terasse en bois cumaru avec piscine de 10m2 au sel.
       collections:
         - landing
         - exterieur
@@ -72,7 +72,7 @@ images:
   - path: description-des-pieces/SEJOUR 3.jpg
     meta:
       title: Séjour niveau haut
-      description: Pièce de vie principale baignée de lumière.
+      description: Vue depuis le séjour 8m de baies vitrées !
       collections:
         - landing
         - interieur
@@ -80,7 +80,7 @@ images:
   - path: description-des-pieces/SEJOUR PRINCIPALE.jpg
     meta:
       title: Séjour principal
-      description: Perspective frontale du séjour et de la terrasse.
+      description: séjour avec le terasse principale au nord !
       collections:
         - landing
         - interieur
@@ -88,7 +88,7 @@ images:
   - path: description-des-pieces/VUE DES PIECES 2.jpeg
     meta:
       title: Vue des pièces 2
-      description: Enfilade lumineuse sur l'espace de vie.
+      description: Entrée de la maison
       collections:
         - landing
         - interieur
@@ -96,21 +96,21 @@ images:
   - path: description-des-pieces/VUE DES PIECES 3.jpeg
     meta:
       title: Vue des pièces 3
-      description: Perspective depuis le séjour vers la cuisine.
+      description: "2 WC séparés avec vasques : en haut et bas"
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 4.jpeg
     meta:
       title: Vue des pièces 4
-      description: Coin salon ouvert sur la terrasse sud.
+      description: Séjour avec cuisine ouverte
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 5.jpeg
     meta:
       title: Vue des pièces 5
-      description: Coin repas avec ouverture sur la terrasse.
+      description: Cuisine Hacker (qualité allemande) - Ilot et plan de travail en granit Zimbabwe noir
       collections:
         - landing
         - interieur
@@ -118,7 +118,7 @@ images:
   - path: description-des-pieces/VUE DES PIECES 6.jpeg
     meta:
       title: Vue des pièces 6
-      description: Détail du séjour et de la cuisine.
+      description: séjour
       collections:
         - landing
         - interieur
@@ -133,42 +133,42 @@ images:
   - path: description-des-pieces/VUE DES PIECES 8.jpeg
     meta:
       title: Vue des pièces 8
-      description: Vue traversante sur le séjour.
+      description: couloir menant aux 3 chambres
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 9.jpeg
     meta:
       title: Vue des pièces 9
-      description: Cuisine ouverte sur la pièce de vie.
+      description: couloir du bas
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 10.jpeg
     meta:
       title: Vue des pièces 10
-      description: Détail du plan de travail et des rangements.
+      description: Buanderie avec espaces de stockage
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 11.jpeg
     meta:
       title: Vue des pièces 11
-      description: Espace lecture et salon cosy.
+      description: "Chambre 1 : donnant sur la terasse sud"
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 12.jpeg
     meta:
       title: Vue des pièces 12
-      description: Perspective sur l'escalier intérieur.
+      description: Chambre 2 avec vue montagne
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 13.jpeg
     meta:
       title: Vue des pièces 13
-      description: Ambiance chaleureuse dans la pièce de vie.
+      description: Dressing dans la chambre parentale
       collections:
         - landing
         - interieur
@@ -176,21 +176,21 @@ images:
   - path: description-des-pieces/VUE DES PIECES 14.jpeg
     meta:
       title: Vue des pièces 14
-      description: Suite parentale avec accès extérieur.
+      description: Chambre parentale avec vasque et douche italienne
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 15.jpeg
     meta:
       title: Vue des pièces 15
-      description: Chambre d'amis lumineuse.
+      description: salle de bains avec vasque, bain et douche à l'italienne
       collections:
         - interieur
     exif: {}
   - path: description-des-pieces/VUE DES PIECES 16.jpeg
     meta:
       title: Vue des pièces 16
-      description: Salle d'eau moderne avec douche italienne.
+      description: douche à l'italienne dans le salle de bain
       collections:
         - interieur
     exif: {}
@@ -212,7 +212,7 @@ images:
   - path: description-des-pieces/VUE ESCALIER.jpg
     meta:
       title: Vue escalier
-      description: Escalier desservant les deux niveaux de la maison.
+      description: Ouverture depuis les escaliers
       collections:
         - landing
         - interieur
@@ -222,28 +222,28 @@ images:
   - path: description-des-pieces/VUE TERASSE PISCINE.jpg
     meta:
       title: Vue terrasse et piscine
-      description: Perspective depuis la terrasse principale vers la piscine.
+      description: Vue abris de jardin et terasse de la piscine
       collections:
         - exterieur
     exif: {}
   - path: description-des-pieces/TERASSE SUD.jpg
     meta:
       title: Terrasse sud
-      description: Coin repas au soleil avec vue dégagée.
+      description: Vue terasse sud
       collections:
         - exterieur
     exif: {}
   - path: description-des-pieces/PSICINE 1.jpg
     meta:
       title: Piscine 1
-      description: Bassin entouré de terrasses en bois.
+      description: Terasse avec la piscine 
       collections:
         - exterieur
     exif: {}
   - path: description-des-pieces/nord principale.jpg
     meta:
       title: Terrasse surélevée
-      description: Terrasse bois avec garde-corps vitrés.
+      description: Carrelage sur plots
       collections:
         - landing
         - exterieur
@@ -251,14 +251,14 @@ images:
   - path: description-des-pieces/JARDIN.jpg
     meta:
       title: Jardin et terrasse principale
-      description: Vue sur le jardin paysager et la terrasse couverte.
+      description: Jardin de 150m2
       collections:
         - exterieur
     exif: {}
   - path: description-des-pieces/PISCINE 3.jpg
     meta:
       title: Piscine 3
-      description: Piscine entourée d'un deck avec vue dégagée.
+      description: piscine avec vue montagne
       collections:
         - exterieur
     exif: {}
@@ -279,35 +279,35 @@ images:
   - path: description-des-pieces/nord 1.jpg
     meta:
       title: Façade nord
-      description: Détail de la façade nord et des accès stationnement.
+      description: Terasse principale de 25m2
       collections:
         - exterieur
     exif: {}
   - path: description-des-pieces/PHOTOS EXT 1.jpeg
     meta:
       title: Allée paysagée
-      description: Cheminement végétalisé menant à la maison.
+      description: Terasse au nord
       collections:
         - exterieur
     exif: {}
   - path: description-des-pieces/ALLE DE LA MAISON.jpg
     meta:
       title: Allée de la maison
-      description: Allée carrossable bordée d'arbustes.
+      description: chemin menant à la maison et à celle du voisin
       collections:
         - exterieur
     exif: {}
   - path: description-des-pieces/ENTRAIN MAISON.jpg
     meta:
       title: Entrée maison (photo)
-      description: Entrée principale vue depuis le portail.
+      description: Entrée de la maison avec borne électrique
       collections:
         - exterieur
     exif: {}
   - path: description-des-pieces/ENTREE MAISON PRINCIPALE.jpg
     meta:
       title: Entrée principale
-      description: Perspective frontale sur la porte d'entrée.
+      description: Entrée de la maison
       collections:
         - exterieur
     exif: {}

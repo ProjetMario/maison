@@ -23,14 +23,13 @@ const { images } = Astro.props;
 			>
 				<Image
 					src={image.src}
-					widths={[320, 480, 640, 768, 960]}
-					sizes="(max-width: 640px) 96vw, (max-width: 1024px) 45vw, 28vw"
-					quality={70}
-					format="webp"
+					widths={[240, 320, 480]}
+					sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+					quality={60}
+					format="jpeg"
 					alt={image.title}
 					loading="lazy"
 					decoding="async"
-					fetchpriority="low"
 				/>
 				<div class="gallery-masonry-overlay">
 					<span class="gallery-masonry-title">{image.description || image.title}</span>
