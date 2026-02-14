@@ -9,12 +9,13 @@ interface Props {
 		fit?: 'cover' | 'contain';
 	}[];
 	interval?: number;
+	id?: string;
 }
 
-const { images, interval = 5000 } = Astro.props;
+const { images, interval = 5000, id } = Astro.props;
 ---
 
-<div class="hero-carousel" data-interval={interval}>
+<div class="hero-carousel" data-interval={interval} data-carousel-id={id}>
 	<div class="carousel-track">
 		{images.map((image, index) => (
 			<div class={`carousel-slide ${index === 0 ? 'active' : ''}`} data-index={index}>
@@ -45,17 +46,6 @@ const { images, interval = 5000 } = Astro.props;
 			></button>
 		))}
 	</div>
-	
-	<button class="carousel-nav carousel-prev" aria-label="Previous">
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-			<polyline points="15 18 9 12 15 6"></polyline>
-		</svg>
-	</button>
-	<button class="carousel-nav carousel-next" aria-label="Next">
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-			<polyline points="9 18 15 12 9 6"></polyline>
-		</svg>
-	</button>
 </div>
 
 <style>
@@ -139,54 +129,52 @@ const { images, interval = 5000 } = Astro.props;
 
 	.carousel-dot:hover,
 	.carousel-dot.active {
-		background: var(--accent, #d4a574);
-		border-color: var(--accent, #d4a574);
+		background: #d4a574;
+		border-color: #d4a574;
+	}
+
+	.carousel-nav-group {
+		position: absolute;
+		left: clamp(2rem, 6vw, 6rem);
+		bottom: clamp(2rem, 5vw, 4rem);
+		display: flex;
+		gap: 1rem;
+		z-index: 30;
 	}
 
 	.carousel-nav {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		background: rgba(0, 0, 0, 0.4);
+		position: relative;
+		background: rgba(0, 0, 0, 0.55);
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		color: white;
-		width: 50px;
-		height: 50px;
+		width: 52px;
+		height: 52px;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
 		transition: all 0.3s ease;
-		z-index: 10;
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
 	}
 
 	.carousel-nav:hover {
-		background: var(--accent, #d4a574);
-		border-color: var(--accent, #d4a574);
+		background: #d4a574;
+		border-color: #d4a574;
 		color: #0a0a0b;
-	}
-
-	.carousel-prev {
-		left: 2rem;
-	}
-
-	.carousel-next {
-		right: 2rem;
+		transform: translateY(-2px);
 	}
 
 	@media (max-width: 768px) {
+		.carousel-nav-group {
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 1.5rem;
+		}
+
 		.carousel-nav {
-			width: 40px;
-			height: 40px;
-		}
-		
-		.carousel-prev {
-			left: 1rem;
-		}
-		
-		.carousel-next {
-			right: 1rem;
+			width: 44px;
+			height: 44px;
 		}
 	}
 </style>
@@ -198,8 +186,17 @@ const { images, interval = 5000 } = Astro.props;
 		carousels.forEach((carousel) => {
 			const slides = carousel.querySelectorAll<HTMLDivElement>('.carousel-slide');
 			const dots = carousel.querySelectorAll<HTMLButtonElement>('.carousel-dot');
-			const prevBtn = carousel.querySelector<HTMLButtonElement>('.carousel-prev');
-			const nextBtn = carousel.querySelector<HTMLButtonElement>('.carousel-next');
+			const carouselId = carousel.dataset.carouselId;
+			
+			const getExternalControl = (type: 'prev' | 'next') => {
+				if (!carouselId) {
+					return null;
+				}
+				return document.querySelector<HTMLButtonElement>(`[data-carousel-target="${carouselId}"][data-carousel-control="${type}"]`);
+			};
+
+			const prevBtn = getExternalControl('prev') ?? carousel.querySelector<HTMLButtonElement>('.carousel-prev');
+			const nextBtn = getExternalControl('next') ?? carousel.querySelector<HTMLButtonElement>('.carousel-next');
 			const interval = parseInt(carousel.dataset.interval ?? '5000', 10);
 			
 			let currentIndex = 0;

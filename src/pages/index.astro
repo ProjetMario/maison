@@ -22,7 +22,7 @@ const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }
 <MainLayout>
 	<!-- HERO CARROUSEL PLEIN ÉCRAN -->
 	<section class="hero-fullscreen" style="position: relative;">
-		<HeroCarousel images={heroImages} interval={6000} />
+		<HeroCarousel id="hero-main" images={heroImages} interval={6000} />
 		<div class="hero-content animate-in" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 20;">
 			<span class="hero-badge">Vente entre particuliers</span>
 			<h1 class="hero-title">Vue panoramique</h1>
@@ -33,6 +33,28 @@ const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }
 			<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
 				<a href="/contact" class="btn btn-primary">Planifier une visite</a>
 				<a href="/description" class="btn btn-outline">Explorer la maison</a>
+			</div>
+			<div class="hero-carousel-controls">
+				<button
+					class="hero-carousel-btn"
+					data-carousel-target="hero-main"
+					data-carousel-control="prev"
+					aria-label="Image précédente"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<polyline points="15 18 9 12 15 6"></polyline>
+					</svg>
+				</button>
+				<button
+					class="hero-carousel-btn"
+					data-carousel-target="hero-main"
+					data-carousel-control="next"
+					aria-label="Image suivante"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<polyline points="9 18 15 12 9 6"></polyline>
+					</svg>
+				</button>
 			</div>
 			<div class="hero-stats">
 				<div class="hero-stat">
