@@ -583,6 +583,20 @@ img {
 	transform: translateY(0);
 }
 
+/* Fallback: ensure gallery is always visible even if JS fails */
+.gallery-masonry {
+	opacity: 1 !important;
+	transform: none !important;
+}
+
+/* No-JS fallback: make reveal elements visible */
+@media (scripting: none) {
+	.reveal {
+		opacity: 1;
+		transform: none;
+	}
+}
+
 /* ===== FLOATING CTA ===== */
 .floating-cta {
 	position: fixed;
@@ -1209,6 +1223,20 @@ body::before {
 	
 	.localisation-photos {
 		grid-template-columns: 1fr;
+	}
+	
+	/* Désactiver les overlays hover sur mobile */
+	.gallery-masonry-item::after {
+		display: none;
+	}
+	
+	.gallery-masonry-overlay {
+		display: none;
+	}
+	
+	.gallery-masonry-item img {
+		filter: none;
+		opacity: 1;
 	}
 }
 
