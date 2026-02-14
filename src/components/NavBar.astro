@@ -23,10 +23,67 @@ const menuItems = [
 <nav class="nav-modern">
 	<div class="container-modern">
 		<a href={base} class="nav-logo">{title}</a>
-		<ul class="nav-links">
+		
+		<!-- Desktop Navigation -->
+		<ul class="nav-links nav-desktop">
 			{menuItems.map((item) => (
 				<li><a href={item.link}>{item.name}</a></li>
 			))}
 		</ul>
+		
+		<!-- Mobile Hamburger Button -->
+		<button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+			<span class="hamburger-line"></span>
+			<span class="hamburger-line"></span>
+			<span class="hamburger-line"></span>
+		</button>
+		
+		<!-- Mobile Navigation Overlay -->
+		<div class="nav-mobile-overlay"></div>
+		
+		<!-- Mobile Navigation Menu -->
+		<div class="nav-mobile">
+			<ul class="nav-mobile-links">
+				{menuItems.map((item, index) => (
+					<li style={`--delay: ${index * 0.05}s`}><a href={item.link}>{item.name}</a></li>
+				))}
+			</ul>
+		</div>
 	</div>
 </nav>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const hamburger = document.querySelector('.nav-hamburger');
+		const mobileNav = document.querySelector('.nav-mobile');
+		const overlay = document.querySelector('.nav-mobile-overlay');
+		const body = document.body;
+
+		const toggleMenu = () => {
+			const isOpen = hamburger?.classList.toggle('active');
+			mobileNav?.classList.toggle('active');
+			overlay?.classList.toggle('active');
+			body.style.overflow = isOpen ? 'hidden' : '';
+			hamburger?.setAttribute('aria-expanded', String(isOpen));
+		};
+
+		hamburger?.addEventListener('click', toggleMenu);
+		overlay?.addEventListener('click', toggleMenu);
+
+		// Close menu on link click
+		document.querySelectorAll('.nav-mobile-links a').forEach(link => {
+			link.addEventListener('click', () => {
+				if (mobileNav?.classList.contains('active')) {
+					toggleMenu();
+				}
+			});
+		});
+
+		// Close on escape key
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && mobileNav?.classList.contains('active')) {
+				toggleMenu();
+			}
+		});
+	});
+</script>
