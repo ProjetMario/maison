@@ -1,6 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import MainLayout from '../layouts/MainLayout.astro';
 import GalleryDisplay from '../components/GalleryDisplay.astro';
+import photoLocalisation5 from '../gallery/localisation/LOCALISATION 5.jpeg';
+import photoLocalisation6 from '../gallery/localisation/LOCALISATION 6.jpeg';
 ---
 
 <MainLayout>
@@ -95,6 +98,16 @@ import GalleryDisplay from '../components/GalleryDisplay.astro';
 			<div class="section-header">
 				<p class="section-eyebrow">Les environs</p>
 				<h2 class="section-title">Découvrez le cadre</h2>
+			</div>
+			<div class="localisation-photo-duo">
+				<div class="localisation-photo-card">
+					<Image src={photoLocalisation5} alt="Vue aérienne du quartier de Voglans" loading="lazy" />
+					<p>Vue aérienne du quartier et du Lac du Bourget</p>
+				</div>
+				<div class="localisation-photo-card">
+					<Image src={photoLocalisation6} alt="Quartier résidentiel et pistes cyclables" loading="lazy" />
+					<p>Quartier résidentiel, écoles et pistes cyclables à proximité</p>
+				</div>
 			</div>
 			<GalleryDisplay collection="localisation" />
 		</div>

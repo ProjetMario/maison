@@ -6,6 +6,7 @@ interface Props {
 	images: {
 		src: ImageMetadata;
 		alt: string;
+		fit?: 'cover' | 'contain';
 	}[];
 	interval?: number;
 }
@@ -23,6 +24,7 @@ const { images, interval = 5000 } = Astro.props;
 					quality={90} 
 					format="webp"
 					loading={index === 0 ? 'eager' : 'lazy'}
+					class={image.fit === 'contain' ? 'carousel-img contain' : 'carousel-img'}
 				/>
 			</div>
 		))}
@@ -77,13 +79,13 @@ const { images, interval = 5000 } = Astro.props;
 		opacity: 1;
 	}
 
-	.carousel-slide img {
+	.carousel-img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 	}
 
-	.carousel-slide[data-index="0"] img {
+	.carousel-img.contain {
 		object-fit: contain;
 		background: #000;
 	}

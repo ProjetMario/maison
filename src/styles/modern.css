@@ -628,6 +628,7 @@ img {
 
 /* ===== MAP SECTION ===== */
 .map-container {
+	position: relative;
 	border-radius: 16px;
 	overflow: hidden;
 	box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -653,6 +654,48 @@ img {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
+}
+
+.map-address {
+	margin-top: 2.5rem;
+	text-align: center;
+}
+
+.map-address h3 {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: clamp(2rem, 3vw, 2.75rem);
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--text-primary);
+}
+
+.localisation-photo-duo {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 1.5rem;
+	margin-bottom: 2.5rem;
+}
+
+.localisation-photo-card {
+	background: var(--bg-card);
+	border: 1px solid rgba(255,255,255,0.08);
+	border-radius: 18px;
+	overflow: hidden;
+	box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.localisation-photo-card img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.localisation-photo-card p {
+	margin: 0;
+	padding: 1.25rem 1.5rem 1.5rem;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 1rem;
+	color: var(--text-primary);
 }
 
 /* ===== LIFESTYLE SECTION ===== */

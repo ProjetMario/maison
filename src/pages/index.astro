@@ -1,18 +1,21 @@
 ---
+import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import MainLayout from '../layouts/MainLayout.astro';
 import GalleryDisplay from '../components/GalleryDisplay.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
 import Icon from '../components/Icon.astro';
-import heroCover from '../gallery/landing/VUE LANDINGG.jpeg';
+import heroCover from '../gallery/landing/VUE LANDINGG copy.jpeg';
 import heroImg2 from '../gallery/landing/LANDING 2.jpg';
 import heroImg4 from '../gallery/landing/LANDING 4.jpg';
+import heroPiscine from '../gallery/description-des-pieces/PSICINE 1.jpg';
 import lifestyleCover from '../gallery/landing/image.png';
 
-const heroImages = [
-	{ src: heroCover, alt: 'Vue sur la maison depuis la terrasse' },
+const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }[] = [
+	{ src: heroCover, alt: 'Vue sur la maison depuis la terrasse', fit: 'contain' },
 	{ src: heroImg2, alt: 'Terrasse avec vue panoramique' },
 	{ src: heroImg4, alt: 'Piscine et jardin' },
+	{ src: heroPiscine, alt: 'Piscine et terrasse principales', fit: 'contain' },
 ];
 ---
 

@@ -21,10 +21,17 @@ try {
 }
 const images = gallery.images.filter(img => img.meta.collections.includes(collection));
 
-const modules = import.meta.glob('../gallery/**/*.jpg', { eager: true });
+const modulesJpg = import.meta.glob('../gallery/**/*.jpg', { eager: true });
 const modulesJpeg = import.meta.glob('../gallery/**/*.jpeg', { eager: true });
+const modulesPng = import.meta.glob('../gallery/**/*.png', { eager: true });
+const modulesPngUpper = import.meta.glob('../gallery/**/*.PNG', { eager: true });
 
-const allModules = { ...modules, ...modulesJpeg } as Record<string, { default: any }>;
+const allModules = {
+	...modulesJpg,
+	...modulesJpeg,
+	...modulesPng,
+	...modulesPngUpper,
+} as Record<string, { default: any }>;
 
 const processedImages = images.map((img) => {
 	const moduleKey = `../gallery/${img.path}`;

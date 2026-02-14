@@ -1,0 +1,59 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GalleryDisplay from '../components/GalleryDisplay.astro';
+
+const videoUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+---
+
+<MainLayout>
+	<!-- HERO VIDEO -->
+	<section class="section" style="padding-top: 140px;">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Visite vidéo</p>
+				<h1 class="section-title">Découvrez la maison en mouvement</h1>
+				<p class="section-desc">
+					Une courte vidéo pour ressentir les volumes, la lumière traversante et les transitions entre intérieurs
+					et terrasses panoramiques. Remplacez le lien par votre propre tournage dès que vous l'avez.
+				</p>
+			</div>
+
+			<div class="video-wrapper">
+				<iframe
+					src={videoUrl}
+					title="Visite vidéo de la maison"
+					loading="lazy"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+				></iframe>
+			</div>
+
+			<div class="video-highlights">
+				<div>
+					<p class="eyebrow">Angle panoramique</p>
+					<p>Présentation de la pièce de vie, du jardin et de la piscine.</p>
+				</div>
+				<div>
+					<p class="eyebrow">Immersion sonore</p>
+					<p>Ajoutez votre propre bande son ou commentaires guidés.</p>
+				</div>
+				<div>
+					<p class="eyebrow">Informations pratiques</p>
+					<p>Insérez en surimpression les surfaces, équipements ou temps d'accès.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SELECTION IMAGES -->
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern">
+			<div class="section-header">
+				<p class="section-eyebrow">Complément visuel</p>
+				<h2 class="section-title">Quelques plans fixes</h2>
+				<p class="section-desc">Le film reste accompagné de cette sélection d'images extérieures.</p>
+			</div>
+			<GalleryDisplay collection="landing" />
+		</div>
+	</section>
+</MainLayout>
