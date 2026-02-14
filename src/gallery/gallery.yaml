@@ -40,7 +40,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: description-des-pieces/PISICINE.png
+  - path: description-des-pieces/PISICINE.jpg
     meta:
       title: Piscine crépuscule
       description: Éclairage du soir sur la piscine et les plages.
@@ -48,7 +48,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: description-des-pieces/IMG_5419.png
+  - path: description-des-pieces/IMG_5419.jpg
     meta:
       title: Terrasse surélevée
       description: Terrasse bois avec garde-corps vitrés.
@@ -56,7 +56,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: description-des-pieces/JARDIN 1.png
+  - path: description-des-pieces/JARDIN 1.jpg
     meta:
       title: Jardin paysagé
       description: Jardin arboré jouxtant la piscine.
@@ -64,7 +64,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: description-des-pieces/JARDIN.png
+  - path: description-des-pieces/JARDIN.jpg
     meta:
       title: Jardin et terrasse principale
       description: Vue sur le jardin paysager et la terrasse couverte.
@@ -80,7 +80,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: description-des-pieces/nord principale.png
+  - path: description-des-pieces/nord principale.jpg
     meta:
       title: Terrasse nord principale
       description: Grande terrasse couverte côté nord reliant cuisine et séjour.
@@ -88,7 +88,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: description-des-pieces/nord.png
+  - path: description-des-pieces/nord.jpg
     meta:
       title: Terrasse nord
       description: Espace frais pour les après-midis d'été avec vue montagne.
@@ -96,7 +96,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: description-des-pieces/nord 1.png
+  - path: description-des-pieces/nord 1.jpg
     meta:
       title: Façade nord
       description: Détail de la façade nord et des accès stationnement.
@@ -136,15 +136,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: description-des-pieces/ENTRAIN MAISON.png
-    meta:
-      title: Entrée maison (plan rapproché)
-      description: Détail du perron et de la porte d'entrée.
-      collections:
-        - landing
-        - exterieur
-    exif: {}
-  - path: description-des-pieces/ENTREE MAISON PRINCIPALE.png
+  - path: description-des-pieces/ENTREE MAISON PRINCIPALE.jpg
     meta:
       title: Entrée principale
       description: Perspective frontale sur la porte d'entrée.
@@ -152,7 +144,7 @@ images:
         - landing
         - exterieur
     exif: {}
-  - path: landing/image.png
+  - path: landing/image.jpg
     meta:
       title: Hero extérieur
       description: Photo large pour l'en-tête du site.

@@ -24,66 +24,130 @@ const menuItems = [
 	<div class="container-modern">
 		<a href={base} class="nav-logo">{title}</a>
 		
-		<!-- Desktop Navigation -->
-		<ul class="nav-links nav-desktop">
-			{menuItems.map((item) => (
-				<li><a href={item.link}>{item.name}</a></li>
-			))}
-		</ul>
-		
-		<!-- Mobile Hamburger Button -->
 		<button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
 			<span class="hamburger-line"></span>
 			<span class="hamburger-line"></span>
 			<span class="hamburger-line"></span>
 		</button>
 		
-		<!-- Mobile Navigation Overlay -->
-		<div class="nav-mobile-overlay"></div>
-		
-		<!-- Mobile Navigation Menu -->
-		<div class="nav-mobile">
-			<ul class="nav-mobile-links">
-				{menuItems.map((item, index) => (
-					<li style={`--delay: ${index * 0.05}s`}><a href={item.link}>{item.name}</a></li>
-				))}
-			</ul>
-		</div>
+		<ul class="nav-links">
+			{menuItems.map((item) => (
+				<li><a href={item.link}>{item.name}</a></li>
+			))}
+		</ul>
 	</div>
 </nav>
+
+<style>
+	.nav-hamburger {
+		display: none;
+		flex-direction: column;
+		gap: 5px;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+		z-index: 110;
+	}
+
+	.hamburger-line {
+		width: 24px;
+		height: 2px;
+		background: var(--text-primary, #fff);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		transform-origin: center;
+	}
+
+	.nav-hamburger.active .hamburger-line:nth-child(1) {
+		transform: rotate(45deg) translate(5px, 5px);
+	}
+
+	.nav-hamburger.active .hamburger-line:nth-child(2) {
+		opacity: 0;
+		transform: scaleX(0);
+	}
+
+	.nav-hamburger.active .hamburger-line:nth-child(3) {
+		transform: rotate(-45deg) translate(5px, -5px);
+	}
+
+	@media (max-width: 768px) {
+		.nav-hamburger {
+			display: flex;
+		}
+
+		.nav-links {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(10, 10, 11, 0.98);
+			-webkit-backdrop-filter: blur(20px);
+			backdrop-filter: blur(20px);
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 2rem;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			z-index: 100;
+		}
+
+		.nav-links.active {
+			opacity: 1;
+			visibility: visible;
+			display: flex;
+		}
+
+		.nav-links li {
+			transform: translateY(20px);
+			opacity: 0;
+			transition: all 0.3s ease;
+		}
+
+		.nav-links.active li {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		.nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+		.nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+		.nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+		.nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+		.nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
+		.nav-links.active li:nth-child(6) { transition-delay: 0.35s; }
+
+		.nav-links a {
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+	}
+</style>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		const hamburger = document.querySelector('.nav-hamburger');
-		const mobileNav = document.querySelector('.nav-mobile');
-		const overlay = document.querySelector('.nav-mobile-overlay');
-		const body = document.body;
+		const navLinks = document.querySelector('.nav-links');
 
-		const toggleMenu = () => {
-			const isOpen = hamburger?.classList.toggle('active');
-			mobileNav?.classList.toggle('active');
-			overlay?.classList.toggle('active');
-			body.style.overflow = isOpen ? 'hidden' : '';
-			hamburger?.setAttribute('aria-expanded', String(isOpen));
-		};
-
-		hamburger?.addEventListener('click', toggleMenu);
-		overlay?.addEventListener('click', toggleMenu);
-
-		// Close menu on link click
-		document.querySelectorAll('.nav-mobile-links a').forEach(link => {
-			link.addEventListener('click', () => {
-				if (mobileNav?.classList.contains('active')) {
-					toggleMenu();
-				}
+		if (hamburger && navLinks) {
+			hamburger.addEventListener('click', () => {
+				hamburger.classList.toggle('active');
+				navLinks.classList.toggle('active');
+				const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+				hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
+				document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
 			});
-		});
 
-		// Close on escape key
-		document.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape' && mobileNav?.classList.contains('active')) {
-				toggleMenu();
-			}
-		});
+			navLinks.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => {
+					hamburger.classList.remove('active');
+					navLinks.classList.remove('active');
+					hamburger.setAttribute('aria-expanded', 'false');
+					document.body.style.overflow = '';
+				});
+			});
+		}
 	});
 </script>

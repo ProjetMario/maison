@@ -16,6 +16,12 @@ export default defineConfig({
 				limitInputPixels: false,
 			},
 		},
+		domains: [],
+		remotePatterns: [],
+	},
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: 'viewport',
 	},
 	vite: {
 		plugins: [tailwindcss()],

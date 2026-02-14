@@ -21,9 +21,13 @@ const { images, interval = 5000 } = Astro.props;
 				<Image 
 					src={image.src} 
 					alt={image.alt} 
-					quality={90} 
-					format="webp"
+					widths={[640, 1024, 1440, 1920, 2560]}
+					sizes="100vw"
+					quality={75} 
+					format="avif"
 					loading={index === 0 ? 'eager' : 'lazy'}
+					fetchpriority={index === 0 ? 'high' : 'auto'}
+					decoding={index === 0 ? 'sync' : 'async'}
 					class={image.fit === 'contain' ? 'carousel-img contain' : 'carousel-img'}
 				/>
 			</div>
@@ -72,7 +76,8 @@ const { images, interval = 5000 } = Astro.props;
 		position: absolute;
 		inset: 0;
 		opacity: 0;
-		transition: opacity 1s ease-in-out;
+		transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+		will-change: opacity;
 	}
 
 	.carousel-slide.active {
@@ -83,6 +88,16 @@ const { images, interval = 5000 } = Astro.props;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		animation: kenburns 20s ease-in-out infinite alternate;
+	}
+
+	@keyframes kenburns {
+		0% {
+			transform: scale(1) translate(0, 0);
+		}
+		100% {
+			transform: scale(1.08) translate(-1%, -1%);
+		}
 	}
 
 	.carousel-img.contain {
