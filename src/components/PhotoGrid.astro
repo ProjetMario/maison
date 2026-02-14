@@ -13,7 +13,7 @@ const { images } = Astro.props;
 
 <section id="photo-grid" class="gallery-masonry">
 	{
-		images.map((image) => (
+		images.map((image, index) => (
 			<a
 				href={image.src.src}
 				class="gallery-masonry-item glightbox"
@@ -28,8 +28,9 @@ const { images } = Astro.props;
 					width={image.src.width}
 					height={image.src.height}
 					alt={image.title}
-					loading="lazy"
-					decoding="async"
+					loading={index < 6 ? 'eager' : 'lazy'}
+					decoding={index < 6 ? 'sync' : 'async'}
+					fetchpriority={index < 3 ? 'high' : index < 6 ? 'auto' : 'low'}
 				/>
 				<div class="gallery-masonry-overlay">
 					<span class="gallery-masonry-title">{image.description || image.title}</span>
