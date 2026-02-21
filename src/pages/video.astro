@@ -57,7 +57,9 @@ const additionalVideos = [
 						</div>
 						<div class="video-card-body">
 							<p class="eyebrow">{video.title}</p>
-							<p>{video.description}</p>
+							{video.description?.trim() && video.description.trim() !== video.title.trim() && (
+								<p>{video.description}</p>
+							)}
 						</div>
 					</article>
 				))}
