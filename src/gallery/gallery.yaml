@@ -17,12 +17,21 @@ collections:
     name: Localisation
 images:
   # --- Landing gallery (bottom of homepage) ---
-  - path: landing/LANDING 3.jpeg
+  - path: description-des-pieces/IMG_0280 2.jpg
     meta:
-      title: Vue Landing 3
-      description: Entrée de la maison avant travaux.
+      title: Façade principale
+      description: Façade et garage après travaux
       collections:
         - landing
+        - exterieur
+    exif: {}
+  - path: description-des-pieces/IMG_0284 2.jpg
+    meta:
+      title: Vue extérieure
+      description: Maison et allée après travaux
+      collections:
+        - landing
+        - exterieur
     exif: {}
   - path: landing/LANDING 4.jpeg
     meta:
@@ -35,13 +44,6 @@ images:
     meta:
       title: Vue Landing 4 (JPG)
       description: Vue sur la piscine depuis le séjour
-      collections:
-        - landing
-    exif: {}
-  - path: landing/LANDING.jpg
-    meta:
-      title: Vue Landing historique
-      description: balcon depuis le séjour
       collections:
         - landing
     exif: {}
@@ -316,4 +318,88 @@ images:
       title: Hero extérieur
       description: Photo large pour l'en-tête du site.
       collections: []
+    exif: {}
+  - path: description-des-pieces/IMG_0249 2.jpg
+    meta:
+      title: Séjour-cuisine
+      description: Espace de vie avec cuisine, salle à manger et salon
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0255 2.jpg
+    meta:
+      title: Cuisine
+      description: Cuisine avec îlot et baies vitrées
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0260 2.jpg
+    meta:
+      title: Couloir
+      description: Couloir avec rangements
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0261 2.jpg
+    meta:
+      title: Chambre enfant
+      description: Première chambre d'enfant
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0262 2.jpg
+    meta:
+      title: Chambre enfant 2
+      description: Deuxième chambre d'enfant
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0263 2.jpg
+    meta:
+      title: Salle de bains
+      description: Salle de bains avec baignoire
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0266 2.jpg
+    meta:
+      title: WC
+      description: Toilettes invités
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0269 2.jpg
+    meta:
+      title: Suite parentale
+      description: Chambre parentale avec vasque
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0274 2.jpg
+    meta:
+      title: Escalier
+      description: Escalier avec puits de lumière
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0275 2.jpg
+    meta:
+      title: Buanderie
+      description: Buanderie avec machine à laver
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0279 2.jpg
+    meta:
+      title: Entrée
+      description: Hall d'entrée
+      collections:
+        - interieur
+    exif: {}
+  - path: description-des-pieces/IMG_0259 2.jpg
+    meta:
+      title: Vue piscine
+      description: Vue sur la piscine et la terrasse depuis l'intérieur
+      collections:
+        - exterieur
     exif: {}

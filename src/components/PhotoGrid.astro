@@ -23,10 +23,10 @@ const { images } = Astro.props;
 			>
 				<Image
 					src={image.src}
-					widths={[240, 320, 480]}
+					widths={[320, 480, 640, 768]}
 					sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 					quality={60}
-					format="jpeg"
+					format="webp"
 					alt={image.title}
 					loading="lazy"
 					decoding="async"
@@ -40,14 +40,28 @@ const { images } = Astro.props;
 </section>
 
 <script>
-	import GLightbox from 'glightbox';
-	
 	document.addEventListener('DOMContentLoaded', () => {
-		GLightbox({
-			selector: '.glightbox',
-			touchNavigation: true,
-			loop: true,
-			autoplayVideos: true
-		});
+		const initLightbox = async () => {
+			const { default: GLightbox } = await import('glightbox');
+			GLightbox({
+				selector: '.glightbox',
+				touchNavigation: true,
+				loop: true,
+				autoplayVideos: true
+			});
+		};
+
+		const grid = document.getElementById('photo-grid');
+		if (grid && 'IntersectionObserver' in window) {
+			const io = new IntersectionObserver((entries, obs) => {
+				if (entries.some(e => e.isIntersecting)) {
+					initLightbox();
+					obs.disconnect();
+				}
+			}, { rootMargin: '200px' });
+			io.observe(grid);
+		} else {
+			initLightbox();
+		}
 	});
 </script>

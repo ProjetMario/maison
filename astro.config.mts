@@ -20,8 +20,8 @@ export default defineConfig({
 		remotePatterns: [],
 	},
 	prefetch: {
-		prefetchAll: true,
-		defaultStrategy: 'viewport',
+		prefetchAll: false,
+		defaultStrategy: 'hover',
 	},
 	vite: {
 		plugins: [tailwindcss()],

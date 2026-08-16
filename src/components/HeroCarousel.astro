@@ -22,10 +22,10 @@ const { images, interval = 5000, id } = Astro.props;
 				<Image 
 					src={image.src} 
 					alt={image.alt} 
-					widths={[480, 768, 1024]}
+					widths={[640, 960, 1280, 1600]}
 					sizes="100vw"
 					quality={60} 
-					format="jpeg"
+					format="webp"
 					loading={index === 0 ? 'eager' : 'lazy'}
 					fetchpriority={index === 0 ? 'high' : 'low'}
 					decoding={index === 0 ? 'sync' : 'async'}
