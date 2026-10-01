@@ -1,0 +1,25 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { publishedGuides } from '../../data/guides';
+import DirectContact from '../../components/DirectContact.astro';
+import { areaEnabled } from '../../data/area';
+const groups = [...new Set(publishedGuides.map(guide => guide.group))];
+---
+<MainLayout>
+  <div class="editorial">
+    <header class="editorial-header">
+      <p class="section-eyebrow">Voglans · Lac du Bourget</p>
+      <h1>Votre projet de maison, en pratique</h1>
+      <p class="lead">Comprendre les lieux, découvrir le quartier et préparer une visite. Les repères des propriétaires pour vous aider à vous projeter.</p>
+    </header>
+    {groups.map(group => <section class="editorial-section">
+      <h2>{group}</h2>
+      <ul class="guide-list">{publishedGuides.filter(guide => guide.group === group).map(guide => <li>
+        <h3><a href={`/guides/${guide.slug}/`}>{guide.title}</a></h3>
+        <p>{guide.description}</p>
+      </li>)}</ul>
+    </section>)}
+    {areaEnabled && <section class="editorial-section"><h2>Comparer les territoires</h2><p><a href="/reperes/">Communes, données publiques et distances autour de Voglans</a></p></section>}
+    <DirectContact />
+  </div>
+</MainLayout>

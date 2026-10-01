@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import MainLayout from '../layouts/MainLayout.astro';
+import property from '../data/property.json';
 import GalleryDisplay from '../components/GalleryDisplay.astro';
 import Icon from '../components/Icon.astro';
 import terrasseSudImg from '../gallery/description-des-pieces/TERASSE SUD.jpg';
@@ -124,7 +125,7 @@ import terrasseNordImg from '../gallery/description-des-pieces/nord principale.j
 			<div class="contact-section">
 				<p class="section-eyebrow">Envie de soleil ?</p>
 				<h2 class="section-title">Venez voir par vous-même</h2>
-				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-phone"><a href={`tel:${property.phone}`}>{property.phoneDisplay}</a></p>
 				<p class="contact-note">
 					Une visite vaut mille photos.
 				</p>

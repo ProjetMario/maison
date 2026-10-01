@@ -1,0 +1,19 @@
+---
+import property from '../data/property.json';
+const en = Astro.props.lang === 'en';
+const currency = (value: number) => new Intl.NumberFormat(en ? 'en-GB' : 'fr-FR', {style: 'currency', currency: 'EUR', maximumFractionDigits: 0}).format(value);
+---
+<section class="editorial-section">
+  <h2>{en ? 'Energy information' : 'Informations énergétiques'}</h2>
+  <p><strong>{en ? 'French energy rating (DPE)' : 'Classe énergie (DPE)'} : {property.dpe}</strong></p>
+  <ol class="energy-scale" aria-label={en ? `Energy scale A to G: ${property.dpe}` : `Échelle énergie de A à G : ${property.dpe}`}>{['A','B','C','D','E','F','G'].map((letter, index) => <li style={`--scale-color:${['#219653','#58b768','#b4cb63','#f5db56','#efb350','#e38352','#ca554e'][index]}`} class:list={{selected: letter === property.dpe}}>{letter}</li>)}</ol>
+  {property.ges && <><p><strong>{en ? 'Greenhouse gas rating (GES)' : 'Classe climat (GES)'} : {property.ges}</strong></p><ol class="energy-scale" aria-label={en ? `Climate scale A to G: ${property.ges}` : `Échelle climat de A à G : ${property.ges}`}>{['A','B','C','D','E','F','G'].map((letter, index) => <li style={`--scale-color:${['#d7e3f4','#bdcae2','#a4b1cf','#929bbb','#7c82a6','#656a91','#525573'][index]}`} class:list={{selected: letter === property.ges}}>{letter}</li>)}</ol></>}
+  <p>{en ? 'Estimated annual energy expenditure for standard use, as provided by the owner' : 'Montant estimé des dépenses annuelles d’énergie pour un usage standard, communiqué par le propriétaire'} : {currency(property.annualEnergyCost.min)} {en ? 'to' : 'à'} {currency(property.annualEnergyCost.max)}.</p>
+  <p>{en ? 'Energy price reference years' : 'Années de référence des prix de l’énergie'} : {property.annualEnergyCost.referenceYears ?? (en ? 'not yet provided by the owner' : 'non encore communiquées par le propriétaire')}.</p>
+  <p>{en ? 'Ask for the full diagnostic report to check the reference energy prices and calculation scope.' : 'Consultez le diagnostic complet pour les années de prix de référence et le périmètre de calcul.'}</p>
+</section>
+<style>
+  .energy-scale { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px; padding:0; margin:1rem 0 1.5rem; max-width:380px; list-style:none; }
+  .energy-scale li { background:var(--scale-color); color:#101418; text-align:center; font-weight:700; padding:.3rem 0; margin:0; border:2px solid transparent; }
+  .energy-scale .selected { outline:2px solid white; outline-offset:2px; }
+</style>

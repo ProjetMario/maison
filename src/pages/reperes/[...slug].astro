@@ -1,0 +1,16 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import AreaDirectory from '../../components/AreaDirectory.astro';
+import AreaSheet from '../../components/AreaSheet.astro';
+import { areaEnabled, area, slug, number, type Town } from '../../data/area';
+import '../../styles/area.css';
+export function getStaticPaths() {
+  return areaEnabled ? [{ params: { slug: undefined }, props: { town: null } }, ...area.towns.map(town => ({ params: { slug: slug(town) }, props: { town } }))] : [];
+}
+const { town } = Astro.props as { town: Town | null };
+const title = town ? `${town.name} (${town.code}) et Voglans : distance et repères` : 'Communes et distances autour de Voglans | Repères géographiques';
+const description = town ? `${town.name}, ${town.department.nom} : ${number(town.population)} habitants, ${number(town.areaKm2,2)} km² et ${number(town.km,1)} km de Voglans à vol d’oiseau. Données sourcées, comparaison et itinéraire.` : 'Comparez les données de 1 999 communes avec Voglans : populations, surfaces, distances à vol d’oiseau et liens cartographiques. Sources publiques et méthode.';
+---
+<MainLayout title={title} description={description}>
+  <article class="editorial area-editorial">{town ? <AreaSheet town={town} /> : <AreaDirectory />}</article>
+</MainLayout>

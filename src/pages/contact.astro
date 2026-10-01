@@ -1,6 +1,8 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import GalleryDisplay from '../components/GalleryDisplay.astro';
+import property from '../data/property.json';
+import { price } from '../data/seo';
 ---
 
 <MainLayout>
@@ -11,7 +13,7 @@ import GalleryDisplay from '../components/GalleryDisplay.astro';
 				<p class="section-eyebrow">Vente directe</p>
 				<h1 class="section-title">Nous contacter</h1>
 				<p class="section-desc">
-					Vente entre particuliers, sans intermédiaire.
+					Vente entre particuliers, sans intermédiaire. Prix : {price()}, DPE {property.dpe}.
 				</p>
 			</div>
 		</div>
@@ -34,7 +36,7 @@ import GalleryDisplay from '../components/GalleryDisplay.astro';
 		<div class="container-narrow">
 			<div style="background: #111113; border-radius: 24px; padding: clamp(3rem, 6vw, 5rem); text-align: center; border: 1px solid rgba(255,255,255,0.08);">
 				<p style="font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: #d4a574; margin-bottom: 1rem;">Téléphone</p>
-				<p style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; color: #d4a574; margin: 1.5rem 0;">06 06 63 24 42</p>
+				<p class="contact-phone"><a href={`tel:${property.phone}`} data-contact="phone">{property.phoneDisplay}</a></p>
 				<p style="color: #a1a1aa; max-width: 500px; margin: 0 auto 2rem; font-size: 1.125rem; line-height: 1.7;">
 					Nous sommes des particuliers et serons ravis de répondre à vos questions 
 					et d'organiser une visite selon vos disponibilités.

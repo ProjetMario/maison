@@ -10,11 +10,15 @@ import heroImg2 from '../gallery/landing/LANDING 2.jpg';
 import heroImg4 from '../gallery/landing/LANDING 4.jpg';
 import heroPiscine from '../gallery/description-des-pieces/PSICINE 1.jpg';
 import lifestyleCover from '../gallery/landing/image.jpg';
+import property from '../data/property.json';
+import { price } from '../data/seo';
+import { publishedGuides } from '../data/guides';
+import EnergyDetails from '../components/EnergyDetails.astro';
 
 const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }[] = [
-	{ src: heroCover, alt: 'Vue sur la maison depuis la terrasse', fit: 'contain' },
-	{ src: heroImg2, alt: 'Terrasse avec vue panoramique' },
-	{ src: heroImg4, alt: 'Piscine et jardin' },
+	{ src: heroImg2, alt: 'Vue sur le lac du Bourget et la Dent du Chat depuis la maison' },
+	{ src: heroImg4, alt: 'Escalier intérieur avec vue sur la piscine', fit: 'contain' },
+	{ src: heroCover, alt: 'Vue sur le lac au coucher du soleil', fit: 'contain' },
 	{ src: heroPiscine, alt: 'Piscine et terrasse principales', fit: 'contain' },
 ];
 ---
@@ -25,7 +29,8 @@ const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }
 		<HeroCarousel id="hero-main" images={heroImages} interval={6000} />
 		<div class="hero-content animate-in" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 20;">
 			<span class="hero-badge">Vente entre particuliers</span>
-			<h1 class="hero-title">Vue panoramique</h1>
+			<h1 class="hero-title">Maison à vendre avec vue sur le lac du Bourget</h1>
+			<p class="hero-price">{price()} · DPE {property.dpe}</p>
 			<p class="hero-subtitle">
 				Maison contemporaine en duplex inversé avec vue sur la Dent du Chat et le Lac du Bourget. 
 				Quartier résidentiel, à Voglans, entre Aix-les-Bains et Chambéry.
@@ -58,15 +63,15 @@ const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }
 			</div>
 			<div class="hero-stats">
 				<div class="hero-stat">
-					<div class="hero-stat-value">133 m²</div>
+					<div class="hero-stat-value">{property.area} m²</div>
 					<div class="hero-stat-label">Surface</div>
 				</div>
 				<div class="hero-stat">
-					<div class="hero-stat-value">3</div>
+					<div class="hero-stat-value">{property.bedrooms}</div>
 					<div class="hero-stat-label">Chambres</div>
 				</div>
 				<div class="hero-stat">
-					<div class="hero-stat-value">2020</div>
+					<div class="hero-stat-value">{property.yearBuilt}</div>
 					<div class="hero-stat-label">Construction</div>
 				</div>
 			</div>
@@ -139,6 +144,19 @@ const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }
 		</div>
 	</section>
 
+	<section class="section reveal" style="background: var(--bg-card);">
+		<div class="container-modern seo-search-band">
+			<div>
+				<p class="section-eyebrow">Recherche immobilière</p>
+				<h2 class="section-title">Maison vue lac du Bourget : la fiche complète</h2>
+				<p class="section-desc">
+					Pour comparer rapidement avec les annonces immobilières du secteur : prix, surface, chambres, piscine, garage, DPE, localisation à Voglans et vente directe entre particuliers.
+				</p>
+			</div>
+			<a href="/maison-vue-lac-bourget/" class="btn btn-primary">Voir la fiche vue lac</a>
+		</div>
+	</section>
+
 	<!-- SECTION NOTRE VIE ICI -->
 	<section class="section reveal" style="background: var(--bg-card);">
 		<div class="container-modern">
@@ -158,21 +176,21 @@ const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }
 					<div class="lifestyle-icon"><Icon name="coffee" size={32} /></div>
 					<h3 class="lifestyle-title">Café face au lac</h3>
 					<p class="lifestyle-desc">
-						Chaque matin, le soleil se lève sur le lac. Un moment de calme absolu pour commencer la journée.
+						Prendre un café face au lac et à la Dent du Chat, depuis l'espace de vie ou la terrasse.
 					</p>
 				</div>
 				<div class="lifestyle-card">
 					<div class="lifestyle-icon"><Icon name="swim" size={32} /></div>
-					<h3 class="lifestyle-title">Baignade à 3 min</h3>
+					<h3 class="lifestyle-title">Baignade au lac</h3>
 					<p class="lifestyle-desc">
-						L'été, on file à la plage du Mottet en quelques minutes. Eau cristalline, montagnes en toile de fond.
+						La plage des Mottets, à Viviers-du-Lac, permet de rejoindre les rives. Vérifiez les conditions d'accès selon la saison.
 					</p>
 				</div>
 				<div class="lifestyle-card">
 					<div class="lifestyle-icon"><Icon name="ski" size={32} /></div>
 					<h3 class="lifestyle-title">Ski le week-end</h3>
 					<p class="lifestyle-desc">
-						Le Revard et La Féclaz à 30 minutes. On part skier le matin et on rentre bronzé l'après-midi.
+						Le Revard et La Féclaz font partie des sorties possibles dans les environs. L'accès dépend de l'itinéraire et des conditions.
 					</p>
 				</div>
 				<div class="lifestyle-card">
@@ -201,13 +219,23 @@ const heroImages: { src: ImageMetadata; alt: string; fit?: 'cover' | 'contain' }
 		</div>
 	</section>
 
+	<section class="section"><div class="container-modern">
+		<EnergyDetails />
+		<p>Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site <a href="https://www.georisques.gouv.fr/">Géorisques</a>.</p>
+		<p>Adresse : {property.street}, {property.postalCode} {property.city}.</p>
+	</div></section>
+	<section class="section"><div class="container-modern">
+		<h2 class="section-title">Préparer votre projet</h2>
+		<ul class="guide-list">{publishedGuides.slice(0, 4).map(guide => <li><h3><a href={`/guides/${guide.slug}/`}>{guide.title}</a></h3><p>{guide.description}</p></li>)}</ul>
+		<p><a href="/guides/">Tous les guides</a></p>
+	</div></section>
 	<!-- CONTACT -->
 	<section class="section reveal">
 		<div class="container-narrow">
 			<div class="contact-section">
 				<p class="section-eyebrow">Intéressé ?</p>
 				<h2 class="section-title">Organisons une visite</h2>
-				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-phone"><a href={`tel:${property.phone}`}>{property.phoneDisplay}</a></p>
 				<p class="contact-note">
 					Nous sommes des particuliers et serons ravis de vous faire découvrir notre maison.
 				</p>

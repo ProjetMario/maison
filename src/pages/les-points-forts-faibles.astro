@@ -1,5 +1,6 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import property from '../data/property.json';
 ---
 
 <MainLayout>
@@ -52,7 +53,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 				<div class="feature-card">
 					<div class="feature-icon">❄️</div>
 					<h3 class="feature-title">Climatisation</h3>
-					<p class="feature-desc">Réversible, toutes pièces</p>
+					<p class="feature-desc">Dans le séjour</p>
 				</div>
 			</div>
 		</div>
@@ -88,7 +89,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 			<div class="contact-section">
 				<p class="section-eyebrow">Des questions ?</p>
 				<h2 class="section-title">Parlons-en</h2>
-				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-phone"><a href={`tel:${property.phone}`}>{property.phoneDisplay}</a></p>
 				<p class="contact-note">
 					Nous répondrons en toute honnêteté.
 				</p>

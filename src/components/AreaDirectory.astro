@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import { Search, MapPin } from 'lucide-astro';
+import { area, number, townPath } from '../data/area';
+import { photos } from '../data/photos';
+const departments = [...new Map(area.towns.map(town => [town.department.code, town.department])).values()].sort((a,b) => a.code.localeCompare(b.code));
+const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+---
+<header class="editorial-header">
+  <p class="section-eyebrow">Voglans et les territoires voisins</p>
+  <h1>Repères pour votre projet de vie</h1>
+  <p class="lead">Communes, populations et distances géographiques pour situer Voglans dans votre recherche. La maison présentée sur ce site se trouve à Voglans, et non dans chacune de ces communes.</p>
+</header>
+<figure class="area-photo">
+  <Image src={photos.view.src} alt={photos.view.alt} width={1100} format="webp" quality={75} />
+  <figcaption>Vue depuis la maison à Voglans. Photo du propriétaire.</figcaption>
+</figure>
+<section class="area-directory" aria-label="Communes">
+  <div class="area-filters">
+    <label><span>Commune ou code postal</span><span class="area-search"><Search size={18} /><input id="area-search" type="search" autocomplete="off" placeholder="Chambéry, Annecy, 73420..." /></span></label>
+    <label><span>Département</span><select id="area-department"><option value="">Tous les départements</option>{departments.map(dept => <option value={dept.code}>{dept.code} · {dept.nom}</option>)}</select></label>
+    <output id="area-count" aria-live="polite">{number(area.towns.length)} communes</output>
+  </div>
+  <p class="area-note">Distances à vol d’oiseau entre les centres géographiques des communes et Voglans. Ce ne sont ni des distances routières ni des durées de trajet.</p>
+  {departments.map(dept => <details class="area-group" data-department={dept.code}>
+    <summary>{dept.nom} <span>{area.towns.filter(town => town.department.code === dept.code).length} communes</span></summary>
+    <ul>{area.towns.filter(town => town.department.code === dept.code).sort((a,b) => a.name.localeCompare(b.name,'fr')).map(town => <li data-search={normalize(`${town.name} ${town.postcodes.join(' ')} ${town.code}`)}>
+      <a href={townPath(town)}><span><MapPin size={16} />{town.name}</span><span>{town.postcodes.join(', ')}</span><strong>{number(town.km,1)} km</strong></a>
+    </li>)}</ul>
+  </details>)}
+  <p id="area-empty" hidden>Aucune commune ne correspond à ces critères.</p>
+</section>
+<section class="editorial-section">
+  <h2>Sources et périmètre</h2>
+  <p>Les 1 999 communes sont sélectionnées selon leur proximité géographique avec Voglans dans les données de l’<a href="https://geo.api.gouv.fr/decoupage-administratif/communes">API Découpage administratif de l’État</a>. L’annuaire n’est pas une liste de biens à vendre et ne couvre pas les communes suisses ou italiennes.</p>
+  <p>Données téléchargées le {new Date(area.retrievedAt).toLocaleDateString('fr-FR', {timeZone:'UTC'})}. Le millésime de population n’est pas précisé dans la réponse utilisée. Les distances et densités sont calculées à partir de cette source ; les valeurs sont arrondies.</p>
+  <p><a href="/localisation/">Situation exacte de la maison</a> · <a href="/guides/">Guides pour préparer votre visite</a></p>
+</section>
+<script>
+  const search = document.querySelector<HTMLInputElement>('#area-search');
+  const department = document.querySelector<HTMLSelectElement>('#area-department');
+  const groups = [...document.querySelectorAll<HTMLDetailsElement>('.area-group')];
+  const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  function filter() {
+    const query = normalize(search?.value ?? '');
+    let count = 0;
+    for (const group of groups) {
+      let matches = 0;
+      for (const row of group.querySelectorAll<HTMLLIElement>('li[data-search]')) {
+        row.hidden = Boolean(department?.value && department.value !== group.dataset.department) || !row.dataset.search?.includes(query);
+        if (!row.hidden) matches++;
+      }
+      group.hidden = matches === 0;
+      group.open = Boolean(query || department?.value) && matches > 0;
+      count += matches;
+    }
+    document.querySelector('#area-count')!.textContent = `${new Intl.NumberFormat('fr-FR').format(count)} commune${count > 1 ? 's' : ''}`;
+    document.querySelector<HTMLElement>('#area-empty')!.hidden = count !== 0;
+  }
+  search?.addEventListener('input', filter);
+  department?.addEventListener('change', filter);
+</script>

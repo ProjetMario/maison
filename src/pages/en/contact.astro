@@ -1,0 +1,19 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import DirectContact from '../../components/DirectContact.astro';
+import property from '../../data/property.json';
+import { price } from '../../data/seo';
+---
+<MainLayout lang="en">
+  <article class="editorial">
+    <header class="editorial-header"><p class="section-eyebrow">Private sale</p><h1>Contact the owners</h1><p class="lead">House overlooking Lac du Bourget in Voglans. Asking price {price('en')}, {property.area} m², {property.bedrooms} bedrooms, French DPE {property.dpe}.</p></header>
+    <div class="editorial-body">
+      <DirectContact lang="en" />
+      <h2>Planning your visit</h2>
+      <p>Please call to discuss the property and arrange an appointment. When calling from abroad, use +33 and omit the initial zero of the French number. The property is in France’s metropolitan time zone.</p>
+      <p>Tell us your preferred dates and any questions you would like to cover. If you need help with English or translated documents, please agree the arrangements before travelling.</p>
+      <p><a href="/en/location/">Find the house</a> · <a href="/en/viewing/">Prepare your viewing</a></p>
+      <p>This website presents a direct sale by private owners. Estate agents and intermediaries are asked not to solicit the owners through this contact.</p>
+    </div>
+  </article>
+</MainLayout>

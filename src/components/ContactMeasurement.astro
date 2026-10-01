@@ -1,0 +1,22 @@
+---
+import { indexable } from '../data/seo';
+---
+<div id="contact-measurement" data-enabled={String(indexable)} hidden></div>
+<script>
+  if (document.querySelector<HTMLElement>('#contact-measurement')?.dataset.enabled === 'true' && navigator.doNotTrack !== '1') {
+    const page = `${location.pathname.replace(/\/+$/, '')}/`;
+    const sent = new Set<string>();
+    const send = (event: string) => {
+      if (sent.has(event)) return;
+      sent.add(event);
+      const body = JSON.stringify({ event, page });
+      if (!navigator.sendBeacon?.('/api/contact-event', new Blob([body], { type: 'application/json' }))) {
+        fetch('/api/contact-event', { method: 'POST', body, headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(() => {});
+      }
+    };
+    if (page === '/contact/' || page === '/en/contact/') send('contact_view');
+    document.addEventListener('click', event => {
+      if (event.target instanceof Element && event.target.closest('a[href^="tel:"]')) send('phone_click');
+    }, { passive: true });
+  }
+</script>

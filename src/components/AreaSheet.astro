@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import { MapPin, Route } from 'lucide-astro';
+import { area, density, number, mapUrl, routeUrl, sourceUrl, townPath, type Town } from '../data/area';
+import { photos } from '../data/photos';
+const { town } = Astro.props as { town: Town };
+const base = area.base;
+const neighbours = area.towns.filter(item => item.department.code === town.department.code && item.code !== town.code).sort((a,b) => Math.abs(a.km-town.km)-Math.abs(b.km-town.km)).slice(0,4);
+const populationDifference = town.population - base.population;
+const rows = [
+  ['Département', `${town.department.nom} (${town.department.code})`, `${base.department.nom} (${base.department.code})`],
+  ['Région', town.region.nom, base.region.nom],
+  ['Code INSEE', town.code, base.code],
+  ['Codes postaux', town.postcodes.join(', '), base.postcodes.join(', ')],
+  ['Population municipale fournie par l’API', number(town.population), number(base.population)],
+  ['Surface communale', `${number(town.areaKm2,2)} km²`, `${number(base.areaKm2,2)} km²`],
+  ['Densité calculée', `${number(density(town))} hab./km²`, `${number(density(base))} hab./km²`],
+];
+---
+<nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">La maison</a><span>/</span><a href="/reperes/">Repères</a><span>/ {town.name} ({town.department.code})</span></nav>
+<header class="editorial-header">
+  <p class="section-eyebrow">{town.department.nom} · {town.code}</p>
+  <h1>{town.name} et Voglans : repères pour comparer</h1>
+  <p class="lead">{town.name} compte {number(town.population)} habitants dans la source utilisée, sur {number(town.areaKm2,2)} km². Son centre géographique est situé à environ {number(town.km,1)} km de celui de Voglans, à vol d’oiseau.</p>
+</header>
+<div class="area-actions">
+  <a class="btn btn-secondary" href={mapUrl(town)} rel="noopener noreferrer"><MapPin size={18} />Carte de {town.name}</a>
+  <a class="btn btn-secondary" href={routeUrl(town)} rel="noopener noreferrer"><Route size={18} />Itinéraire vers Voglans</a>
+</div>
+<section class="editorial-section">
+  <h2>{town.name} et Voglans en chiffres</h2>
+  <div class="area-table"><table><caption>Données communales, pas caractéristiques de la maison</caption><thead><tr><th scope="col">Repère</th><th scope="col">{town.name}</th><th scope="col">Voglans</th></tr></thead><tbody>{rows.map(([label,a,b]) => <tr><th scope="row">{label}</th><td>{a}</td><td>{b}</td></tr>)}</tbody></table></div>
+  <p class="area-note">La population indiquée pour {town.name} est {populationDifference === 0 ? 'identique à celle' : `${populationDifference > 0 ? 'supérieure' : 'inférieure'} de ${number(Math.abs(populationDifference))} habitants à celle`} de Voglans. Une moyenne communale ne décrit pas l’ambiance d’un quartier, les services disponibles ou la fréquentation saisonnière.</p>
+</section>
+<section class="editorial-section">
+  <h2>Situer {town.name} par rapport aux pôles régionaux</h2>
+  <ul class="area-distances"><li><strong>Voglans</strong><span>{number(town.km,1)} km</span></li>{town.distances.map(item => <li><strong>{area.anchors.find(anchor => anchor.code === item.code)!.name}</strong><span>{number(item.km,1)} km</span></li>)}</ul>
+  <p class="area-note">Ces distances sont calculées entre les points centraux fournis par l’API. Elles ne suivent aucune route. Le relief, les accès et la circulation peuvent fortement modifier le parcours réel. Le lien d’itinéraire part du centre de {town.name} et arrive au centre de Voglans, pas à l’adresse de la maison.</p>
+</section>
+<section class="editorial-section">
+  <h2>Les vérifications utiles avant de changer de cadre de vie</h2>
+  <p>{town.department.code === base.department.code ? `${town.name} et Voglans appartiennent au même département, la Savoie. Cela ne garantit pas les mêmes transports, secteurs scolaires ou règles locales.` : `${town.name} se situe dans le département ${town.department.nom} (${town.department.code}), tandis que Voglans est en Savoie (73). Les démarches communales et les interlocuteurs locaux sont donc à vérifier séparément.`}</p>
+  <ul class="area-checklist"><li>Comparer votre trajet réel domicile-travail à l’horaire habituel, et non la seule distance géographique.</li><li>Vérifier l’accès aux écoles, commerces et services correspondant à votre foyer auprès des organismes concernés.</li><li>Observer les nuisances, les accès et le voisinage lors d’une visite sur place.</li><li>Consulter les documents du bien avant de conclure sur un budget ou une possibilité d’aménagement.</li></ul>
+  <p>Cette fiche ne fournit ni prix immobilier local, ni classement des communes, ni estimation de rendement.</p>
+</section>
+<section class="editorial-section area-house">
+  <h2>Une maison à découvrir à Voglans</h2>
+  <figure><Image src={photos.view.src} alt={photos.view.alt} width={800} format="webp" quality={75} loading="lazy" /><figcaption>Photo de la maison à Voglans. Ce n’est pas une vue de {town.name}.</figcaption></figure>
+  <p>Le bien à vendre sur ce site se situe au 93 chemin de la Combe à Voglans. Cette fiche sur {town.name} n’annonce pas un logement en vente dans cette commune.</p>
+  <p><a href="/description/">Voir la maison et ses pièces</a> · <a href="/localisation/">Vérifier son adresse exacte</a> · <a href="/guides/preparer-visite-maison-voglans/">Préparer une visite</a></p>
+</section>
+<section class="editorial-section">
+  <h2>Sources et méthode</h2>
+  <p>Données de l’API Découpage administratif de l’État, téléchargées le {new Date(area.retrievedAt).toLocaleDateString('fr-FR', {timeZone:'UTC'})}. Le millésime de population n’est pas précisé dans la réponse utilisée. Les surfaces sont converties des hectares en km² ; les densités et distances sont calculées puis arrondies.</p>
+  <ul class="source-list"><li><a href={sourceUrl(town)}>Données officielles de {town.name}, code {town.code}</a></li><li><a href={sourceUrl(base)}>Données officielles de Voglans</a></li><li><a href="https://geo.api.gouv.fr/decoupage-administratif/communes">Documentation et périmètre de la source</a></li></ul>
+</section>
+<section class="editorial-section"><h2>Autres communes du département</h2><ul class="source-list">{neighbours.map(item => <li><a href={townPath(item)}>{item.name} ({item.code}) : {number(item.km,1)} km de Voglans à vol d’oiseau</a></li>)}</ul><p><a href="/reperes/">Toutes les communes</a></p></section>

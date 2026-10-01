@@ -1,0 +1,10 @@
+---
+import property from '../data/property.json';
+const en = Astro.props.lang === 'en';
+---
+<section class="direct-contact">
+  <h2>{en ? 'Arrange a viewing with the owners' : 'Organiser une visite avec les propriétaires'}</h2>
+  <p>{en ? 'Viewings by appointment. Please mention your preferred dates when you call.' : 'Visites sur rendez-vous. Indiquez vos disponibilités lors de notre échange.'}</p>
+  <a href={`tel:${property.phone}`} class="phone" data-contact="phone">{en ? '+33 6 06 63 24 42' : property.phoneDisplay}</a>
+  <p><a href={en ? '/en/contact/' : '/contact/'}>{en ? 'Contact details' : 'Coordonnées et informations pratiques'}</a></p>
+</section>

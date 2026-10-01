@@ -1,81 +1,13 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import GalleryDisplay from '../components/GalleryDisplay.astro';
-import videoFour from '../gallery/description-des-pieces/VIDEO 1.mov';
-import videoFive from '../gallery/description-des-pieces/VIDEO 1.mov';
-import videoSix from '../gallery/description-des-pieces/VIDEO 1.mov';
-import videoLanding from '../gallery/description-des-pieces/VIDEO 1.mov';
-
-const additionalVideos = [
-	{
-		src: videoLanding,
-		title: 'Vue immersive du panorama',
-		description: 'Balade filmée depuis la terrasse principale avec vue plongeante sur le lac.'
-	},
-	{
-		src: videoFour,
-		title: 'Entrée de la maison avant les travaux',
-		description: 'Visite guidée de l’allée et du portail avant la rénovation.'
-	},
-	{
-		src: videoFive,
-		title: 'Focus sur le séjour',
-		description: 'Présentation rapide des suites et de la circulation à l’étage.'
-	},
-	{
-		src: videoSix,
-		title: 'Focus sur le rez de chaussée et les chambres du bas',
-		description: 'Visite filmée du rez-de-chaussée et des chambres du bas.'
-	}
-];
+import DirectContact from '../components/DirectContact.astro';
+import video from '../gallery/description-des-pieces/VIDEO 1.mov';
 ---
-
 <MainLayout>
-	<!-- AUTRES VIDEOS -->
-	<section class="section reveal" style="background: var(--bg-elevated);">
-		<div class="container-modern">
-			<div class="section-header section-header-sticky">
-				<p class="section-eyebrow">Autres séquences</p>
-				<h2 class="section-title">Vivez chaque espace en mouvement</h2>
-			</div>
-
-			<div class="video-grid">
-				{additionalVideos.map((video, index) => (
-					<article class="video-card gradient-accent glow-on-hover text-reveal" style={`animation-delay: ${index * 0.1}s;`}>
-						<div class="video-card-media">
-							<video
-								src={video.src}
-								controls
-								playsinline
-								muted
-								loop
-								preload="metadata"
-							>
-								<source src={video.src} type="video/quicktime" />
-								Votre navigateur ne lit pas ce format. <a href={video.src} download> Télécharger la vidéo</a>.
-							</video>
-						</div>
-						<div class="video-card-body">
-							<p class="eyebrow">{video.title}</p>
-							{video.description?.trim() && video.description.trim() !== video.title.trim() && (
-								<p>{video.description}</p>
-							)}
-						</div>
-					</article>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<!-- SELECTION IMAGES -->
-	<section class="section reveal" style="background: var(--bg-card);">
-		<div class="container-modern">
-			<div class="section-header">
-				<p class="section-eyebrow">Complément visuel</p>
-				<h2 class="section-title">Quelques plans fixes</h2>
-				<p class="section-desc">Le film reste accompagné de cette sélection d'images extérieures.</p>
-			</div>
-			<GalleryDisplay collection="landing" />
-		</div>
-	</section>
+  <article class="editorial">
+    <header class="editorial-header"><p class="section-eyebrow">Découvrir la maison</p><h1>La maison en vidéo</h1><p class="lead">Une séquence filmée par les propriétaires pour compléter les photos avant votre visite.</p></header>
+    <div class="video-wrapper"><video controls playsinline preload="none"><source src={video} type="video/quicktime" /><a href={video}>Télécharger la vidéo</a></video></div>
+    <p><a href={video}>Ouvrir ou télécharger la vidéo originale</a></p>
+    <DirectContact />
+  </article>
 </MainLayout>

@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import GalleryDisplay from '../components/GalleryDisplay.astro';
 import photoLocalisation5 from '../gallery/localisation/LOCALISATION 5.jpeg';
 import photoLocalisation6 from '../gallery/localisation/LOCALISATION 6.jpeg';
+import property from '../data/property.json';
 ---
 
 <MainLayout>
@@ -14,7 +15,7 @@ import photoLocalisation6 from '../gallery/localisation/LOCALISATION 6.jpeg';
 				<p class="section-eyebrow">Voglans, Savoie</p>
 				<h1 class="section-title">Un cadre de vie d'exception</h1>
 				<p class="section-desc">
-					Entre lac et montagnes, à quelques minutes de tout.
+					Entre lac et montagnes, à Voglans, près de Chambéry et d'Aix-les-Bains.
 				</p>
 			</div>
 		</div>
@@ -26,22 +27,22 @@ import photoLocalisation6 from '../gallery/localisation/LOCALISATION 6.jpeg';
 			<div class="features-grid">
 				<div class="feature-card">
 					<div class="feature-icon">🏖️</div>
-					<h3 class="feature-title">3 min</h3>
+					<h3 class="feature-title">Lac du Bourget</h3>
 					<p class="feature-desc">Du Lac du Bourget, plages et port</p>
 				</div>
 				<div class="feature-card">
 					<div class="feature-icon">🏙️</div>
-					<h3 class="feature-title">7 min</h3>
+					<h3 class="feature-title">Chambéry</h3>
 					<p class="feature-desc">De Chambéry centre-ville</p>
 				</div>
 				<div class="feature-card">
 					<div class="feature-icon">🚗</div>
-					<h3 class="feature-title">5 min</h3>
+					<h3 class="feature-title">A41</h3>
 					<p class="feature-desc">De l'autoroute A41</p>
 				</div>
 				<div class="feature-card">
 					<div class="feature-icon">⛷️</div>
-					<h3 class="feature-title">30 min</h3>
+					<h3 class="feature-title">Massif des Bauges</h3>
 					<p class="feature-desc">Des stations de ski</p>
 				</div>
 			</div>
@@ -58,6 +59,7 @@ import photoLocalisation6 from '../gallery/localisation/LOCALISATION 6.jpeg';
 			</div>
 			<div class="map-container">
 				<iframe 
+					title="Situation de la maison à Voglans"
 					src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d158.25970479962888!2d5.8963601291434795!3d45.62990621475697!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2sfr!4v1770902057309!5m2!1sfr!2sfr"
 					width="100%" 
 					height="450" 
@@ -70,24 +72,27 @@ import photoLocalisation6 from '../gallery/localisation/LOCALISATION 6.jpeg';
 			<div class="map-legend">
 				<div class="map-legend-item">
 					<span class="map-legend-dot" style="background: #3b82f6;"></span>
-					<span>Lac du Bourget — 3 min</span>
+					<span>Lac du Bourget</span>
 				</div>
 				<div class="map-legend-item">
 					<span class="map-legend-dot" style="background: #10b981;"></span>
-					<span>Chambéry — 7 min</span>
+					<span>Chambéry</span>
 				</div>
 				<div class="map-legend-item">
 					<span class="map-legend-dot" style="background: #f59e0b;"></span>
-					<span>Aix-les-Bains — 10 min</span>
+					<span>Aix-les-Bains</span>
 				</div>
 				<div class="map-legend-item">
 					<span class="map-legend-dot" style="background: #ef4444;"></span>
-					<span>Stations de ski — 30 min</span>
+					<span>Stations de ski</span>
 				</div>
 			</div>
 			<div class="map-address">
 				<p class="section-eyebrow">Adresse exacte</p>
-				<h3>93 chemin de la Combe<br />73420 Voglans</h3>
+				<h3>{property.street}<br />{property.postalCode} {property.city}</h3>
+				<p>Les temps de trajet varient selon l'itinéraire et la circulation. Vérifiez vos parcours habituels avant la visite.</p>
+				<p>Pour les recherches de maison avec vue sur le lac du Bourget, consultez aussi la <a href="/maison-vue-lac-bourget/">fiche immobilière dédiée à la vue lac</a> : prix, surface, piscine, garage, DPE et vente directe entre particuliers.</p>
+				<p><a href="https://mairie-voglans.fr/">Mairie de Voglans</a> · <a href="https://www.ondeagrandlac.fr/itineraires/decouvrir-le-territoire-en-bus">Transports Ondéa Grand Lac</a></p>
 			</div>
 		</div>
 	</section>
@@ -119,7 +124,7 @@ import photoLocalisation6 from '../gallery/localisation/LOCALISATION 6.jpeg';
 			<div class="contact-section">
 				<p class="section-eyebrow">Des questions ?</p>
 				<h2 class="section-title">Parlons du quartier</h2>
-				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-phone"><a href={`tel:${property.phone}`}>{property.phoneDisplay}</a></p>
 				<p class="contact-note">
 					Nous serons ravis de vous parler de notre vie quotidienne ici.
 				</p>

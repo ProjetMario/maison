@@ -1,0 +1,36 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  CONTENT_BATCH = "3"
+  INCLUDE_AREA_PAGES = "true"
+
+[context.production.environment]
+  SITE_INDEXABLE = "true"
+  GOOGLE_ANALYTICS_ID = "G-X5MMERCFVP"
+
+[context.deploy-preview.environment]
+  SITE_INDEXABLE = "false"
+  CONTENT_BATCH = "3"
+
+[context.branch-deploy.environment]
+  SITE_INDEXABLE = "false"
+  CONTENT_BATCH = "3"
+
+[[redirects]]
+  from = "/videos"
+  to = "/video/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/videos/"
+  to = "/video/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-store"

@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import MainLayout from '../../layouts/MainLayout.astro';
+import DirectContact from '../../components/DirectContact.astro';
+import { photos } from '../../data/photos';
+import property from '../../data/property.json';
+---
+<MainLayout lang="en">
+  <article class="editorial">
+    <header class="editorial-header"><p class="section-eyebrow">Voglans · Savoie</p><h1>Between Lac du Bourget, Chambéry and Aix-les-Bains</h1><p class="lead">Find the house and explore the places that would become part of your daily life.</p></header>
+    <Image class="editorial-image" src={photos.location.src} alt={photos.location.en} width={1200} format="webp" loading="eager" />
+    <div class="editorial-body">
+      <h2>The address</h2><p>{property.street}<br />{property.postalCode} {property.city}<br />Savoie, France</p>
+      <p><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${property.street}, ${property.postalCode} ${property.city}, France`)}`}>View the address on Google Maps</a></p>
+      <h2>Plan journeys that match your needs</h2>
+      <p>Use the full address when checking journeys to work, railway stations or local services. Traffic and connections vary: no fixed travel time is guaranteed. If you are considering moving here, allow time to explore the area after your viewing.</p>
+      <p>Check current routes and timetables with <a href="https://www.ondeagrandlac.fr/itineraires/decouvrir-le-territoire-en-bus">Ondéa Grand Lac</a>. The <a href="https://mairie-voglans.fr/">Voglans town hall website</a> provides municipal contacts and local information. School arrangements and service availability should be confirmed directly.</p>
+      <h2>Enjoying the lake</h2>
+      <p>The house overlooks Lac du Bourget but is not a waterfront property. Public beaches and lakeside walks are separate destinations. Les Mottets beach is in nearby Viviers-du-Lac; check <a href="https://grand-lac.fr/au-quotidien/services-a-la-population/plages">Grand Lac’s beach information</a> for access conditions, fees and seasonal supervision.</p>
+      <h2>See the surroundings for yourself</h2>
+      <p>Assess the neighbouring properties and sound environment during your visit. The owners mention possible main-road and airport noise. Visiting at another time of day can help you decide whether the location suits your expectations.</p>
+      <DirectContact lang="en" />
+    </div>
+  </article>
+</MainLayout>

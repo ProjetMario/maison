@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import property from './src/data/property.json';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://rockem.github.io',
+	site: property.origin,
+	trailingSlash: 'always',
 	base: '/',
 	compressHTML: true,
 	build: {

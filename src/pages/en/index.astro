@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import MainLayout from '../../layouts/MainLayout.astro';
+import DirectContact from '../../components/DirectContact.astro';
+import EnergyDetails from '../../components/EnergyDetails.astro';
+import { photos } from '../../data/photos';
+import property from '../../data/property.json';
+import { price } from '../../data/seo';
+---
+<MainLayout lang="en">
+  <article class="editorial">
+    <header class="editorial-header">
+      <p class="section-eyebrow">Voglans · Savoie · France</p>
+      <h1>Lake-view house for sale in Voglans</h1>
+      <p class="lead">{price('en')} · {property.area} m² · {property.bedrooms} bedrooms · DPE {property.dpe}</p>
+      <p class="lead">A contemporary home overlooking Lac du Bourget and the Dent du Chat, with a heated pool, three terraces and a double garage. Direct sale by the owners.</p>
+    </header>
+    <figure><Image class="editorial-image" src={photos.view.src} alt={photos.view.en} widths={[480, 800, 1200]} sizes="100vw" format="webp" loading="eager" /><figcaption>{photos.view.en}. Owner’s photograph.</figcaption></figure>
+    <div class="editorial-body">
+      <h2>Living spaces designed around the view</h2>
+      <p>Built in {property.yearBuilt}, the house has an inverted layout: the open-plan kitchen and living room are upstairs, while the bedrooms are on the lower level. The living space opens onto the terraces and garden. There are stairs, so this is not a step-free property.</p>
+      <p>The lower level includes {property.bedrooms} bedrooms, including a main bedroom with a dressing area and private shower room. There is also a laundry room, another bathroom with a bath and shower, and separate toilets.</p>
+      <Image class="editorial-image" src={photos.living.src} alt={photos.living.en} width={1000} format="webp" loading="lazy" />
+      <h2>Outdoor spaces and equipment</h2>
+      <p>The house has a heated saltwater pool, a timber terrace, a south-facing tiled terrace and a north-facing terrace accessible from the living room. Underfloor heating is supplied by a heat pump, and the living room has air conditioning.</p>
+      <p>A double garage and additional parking complete the property. The garage shares a wall with the neighbouring garage. An electric vehicle charging point is listed among the equipment; its details can be checked during a viewing.</p>
+      <Image class="editorial-image" src={photos.pool.src} alt={photos.pool.en} width={1000} format="webp" loading="lazy" />
+      <h2>Location and points to consider</h2>
+      <p>The address is {property.street}, {property.postalCode} {property.city}, {property.region}. The house has a view of the lake, not a private waterfront or direct access to its shores. You will need to travel to a public beach or lakeside access.</p>
+      <p>The owners report some overlooking and possible noise from the main road and airport. Please assess these during your visit, alongside the stairs and shared garage wall. <a href="/en/location/">Explore the location</a> and <a href="/en/viewing/">prepare your viewing</a>.</p>
+      <EnergyDetails lang="en" />
+      <p>Information about risks affecting this property is available on <a href="https://www.georisques.gouv.fr/">Géorisques</a>. Request the property’s full documents before making a decision.</p>
+      <DirectContact lang="en" />
+    </div>
+  </article>
+</MainLayout>

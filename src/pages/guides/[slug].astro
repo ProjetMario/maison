@@ -1,0 +1,39 @@
+---
+import { Image, getImage } from 'astro:assets';
+import MainLayout from '../../layouts/MainLayout.astro';
+import DirectContact from '../../components/DirectContact.astro';
+import EnergyDetails from '../../components/EnergyDetails.astro';
+import { publishedGuides, type Guide } from '../../data/guides';
+import { photos } from '../../data/photos';
+export function getStaticPaths() { return publishedGuides.map(guide => ({ params: { slug: guide.slug }, props: { guide } })); }
+const { guide } = Astro.props as { guide: Guide };
+const photo = photos[guide.image];
+const share = await getImage({ src: photo.src, width: 1200, format: 'jpeg', quality: 80 });
+const related = publishedGuides.filter(item => guide.related.includes(item.slug));
+---
+<MainLayout title={`${guide.title} | Maison vue Lac`} description={guide.description} image={share.src} article>
+  <article class="editorial">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">La maison</a><span>/</span><a href="/guides/">Guides</a><span>/ {guide.group}</span></nav>
+    <header class="editorial-header"><h1>{guide.title}</h1><p class="lead">{guide.description}</p></header>
+    <figure>
+      <Image class="editorial-image" src={photo.src} alt={photo.alt} widths={[480, 800, 1200]} sizes="(max-width: 768px) 100vw, 1100px" format="webp" quality={78} loading="eager" />
+      <figcaption>{photo.alt}. Photo du propriétaire.</figcaption>
+    </figure>
+    <div class="editorial-body">
+      {guide.sections.map(section => <section>
+        <h2>{section.title}</h2>
+        {section.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+        {section.checklist && <ul>{section.checklist.map(item => <li>{item}</li>)}</ul>}
+      </section>)}
+      {guide.slug === 'confort-energie-dpe-b' && <EnergyDetails />}
+      <p><a href="/description/">Voir la description complète de la maison</a> · <a href="/les-points-forts-faibles/">Atouts et points à considérer</a></p>
+      {guide.sources.length > 0 && <section class="editorial-section">
+        <h2>Sources et informations pratiques</h2>
+        <ul class="source-list">{guide.sources.map(source => <li><a href={source.url} rel="noopener noreferrer">{source.label}</a></li>)}</ul>
+        <p>Sources consultées le 30 septembre 2026. Vérifiez les conditions et informations actuelles auprès des organismes concernés.</p>
+      </section>}
+      <DirectContact />
+      {related.length > 0 && <section class="editorial-section"><h2>Pour poursuivre votre découverte</h2><ul>{related.map(item => <li><a href={`/guides/${item.slug}/`}>{item.title}</a></li>)}</ul></section>}
+    </div>
+  </article>
+</MainLayout>

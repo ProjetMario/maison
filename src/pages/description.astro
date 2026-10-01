@@ -2,6 +2,7 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import GalleryDisplay from '../components/GalleryDisplay.astro';
 import Icon from '../components/Icon.astro';
+import property from '../data/property.json';
 ---
 
 <MainLayout>
@@ -9,7 +10,7 @@ import Icon from '../components/Icon.astro';
 	<section class="section" style="padding-top: 140px;">
 		<div class="container-modern">
 			<div class="section-header">
-				<p class="section-eyebrow">133 m² habitables • Construite en 2020</p>
+				<p class="section-eyebrow">{property.area} m² habitables • Construite en {property.yearBuilt}</p>
 				<h1 class="section-title">Explorer la maison</h1>
 				<p class="section-desc">
 					Duplex inversé offrant un espace de vie tourné vers l'extérieur. 
@@ -40,7 +41,7 @@ import Icon from '../components/Icon.astro';
 						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">Buanderie</li>
 						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">Salle d'eau avec douche et baignoire</li>
 						<li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary);">WC séparé</li>
-						<li style="padding: 0.75rem 0; color: var(--text-secondary);">3 chambres, dont une suite parentale avec dressing et salle d'eau privative</li>
+						<li style="padding: 0.75rem 0; color: var(--text-secondary);">{property.bedrooms} chambres, dont une suite parentale avec dressing et salle d'eau privative</li>
 					</ul>
 				</div>
 			</div>
@@ -74,7 +75,7 @@ import Icon from '../components/Icon.astro';
 				<div class="feature-card">
 					<div class="feature-icon"><Icon name="home" size={28} /></div>
 					<h3 class="feature-title">Maison récente</h3>
-					<p class="feature-desc">Construite en 2020, aucun travaux à prévoir</p>
+					<p class="feature-desc">Construite en {property.yearBuilt}</p>
 				</div>
 				<div class="feature-card">
 					<div class="feature-icon"><Icon name="bed" size={28} /></div>
@@ -124,7 +125,7 @@ import Icon from '../components/Icon.astro';
 			<div class="contact-section">
 				<p class="section-eyebrow">Envie de voir ?</p>
 				<h2 class="section-title">Organisons une visite</h2>
-				<p class="contact-phone">06 06 63 24 42</p>
+				<p class="contact-phone"><a href={`tel:${property.phone}`}>{property.phoneDisplay}</a></p>
 				<p class="contact-note">
 					Nous organisons les visites selon vos disponibilités.
 				</p>

@@ -1,0 +1,22 @@
+{
+  "origin": "https://maison-vuelac.com",
+  "name": "Maison vue Lac du Bourget",
+  "price": 780000,
+  "currency": "EUR",
+  "status": "for-sale",
+  "area": 133,
+  "bedrooms": 3,
+  "yearBuilt": 2020,
+  "dpe": "B",
+  "ges": "B",
+  "annualEnergyCost": { "min": 2700, "max": 3000, "referenceYears": null },
+  "phone": "+33606632442",
+  "phoneDisplay": "06 06 63 24 42",
+  "street": "93 chemin de la Combe",
+  "postalCode": "73420",
+  "city": "Voglans",
+  "region": "Savoie",
+  "country": "FR",
+  "latitude": 45.629906,
+  "longitude": 5.89636
+}

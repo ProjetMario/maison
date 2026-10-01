@@ -1,0 +1,20 @@
+---
+import property from '../data/property.json';
+import { price, type Language } from '../data/seo';
+const { lang = 'fr' } = Astro.props as { lang?: Language };
+const en = lang === 'en';
+const status = property.status === 'sold' ? (en ? 'Sold' : 'Vendue') : property.status === 'under-offer' ? (en ? 'Under offer' : 'Sous offre') : (en ? 'Private sale' : 'Vente entre particuliers');
+---
+<section class="property-facts" aria-label={en ? 'Property facts' : 'La maison en bref'}>
+  <div class="container-modern facts-inner">
+    <div><span class="facts-label">{status}</span><strong>{price(lang)}</strong></div>
+    <dl>
+      <div><dt>{en ? 'Living area' : 'Surface habitable'}</dt><dd>{property.area} m²</dd></div>
+      <div><dt>{en ? 'Bedrooms' : 'Chambres'}</dt><dd>{property.bedrooms}</dd></div>
+      <div><dt>{en ? 'Built in' : 'Construction'}</dt><dd>{property.yearBuilt}</dd></div>
+      <div><dt>{en ? 'French energy rating' : 'Classe énergie'}</dt><dd class="energy-rating">DPE {property.dpe}</dd></div>
+      {property.ges && <div><dt>{en ? 'Climate rating' : 'Classe climat'}</dt><dd>GES {property.ges}</dd></div>}
+    </dl>
+    <a class="btn btn-primary" href={en ? '/en/contact/' : '/contact/'}>{en ? 'Contact the owners' : 'Contacter les propriétaires'}</a>
+  </div>
+</section>

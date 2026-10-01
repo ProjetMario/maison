@@ -28,3 +28,5 @@ src/data/__tests__/gallery/gallery.yaml
 
 # Local Netlify folder
 .netlify
+.seo/
+.env.local

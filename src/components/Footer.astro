@@ -1,31 +1,16 @@
 ---
-const year = new Date().getFullYear();
-const base = import.meta.env.BASE_URL || '/';
-const cleanBase = base === '/' ? '' : base.replace(/\/$/, '');
-const buildLink = (path: string) => {
-	if (!path) return cleanBase || '/';
-	return cleanBase ? `${cleanBase}/${path}` : `/${path}`;
-};
-
-const menuItems = [
-	{ name: 'Accueil', link: buildLink('') },
-	{ name: 'Localisation', link: buildLink('localisation') },
-	{ name: 'Intérieurs', link: buildLink('description') },
-	{ name: 'Extérieurs', link: buildLink('les-exterieurs') },
-	{ name: 'Contact', link: buildLink('contact') },
-];
+import property from '../data/property.json';
+import { areaEnabled } from '../data/area';
+const en = Astro.props.lang === 'en';
+const items = en ? [['The house', '/en/'], ['Location', '/en/location/'], ['Viewing guide', '/en/viewing/'], ['Contact', '/en/contact/']] : [['Accueil', '/'], ['Maison vue lac', '/maison-vue-lac-bourget/'], ['Points clés', '/les-points-forts-faibles/'], ['Vidéo', '/video/'], ['Guides', '/guides/'], ['Contact', '/contact/']];
 ---
-
 <footer class="footer-modern">
-	<div class="container-modern">
-		<div class="footer-content">
-			<div class="footer-brand">Vente entre particuliers</div>
-			<ul class="footer-links">
-				{menuItems.map((item) => (
-					<li><a href={item.link}>{item.name}</a></li>
-				))}
-			</ul>
-		</div>
-		<p class="footer-copy">© {year} — Maison vue Lac du Bourget</p>
-	</div>
+  <div class="container-modern">
+    <div class="footer-content">
+      <div class="footer-brand">{en ? 'Direct from the owners' : 'Vente entre particuliers'}</div>
+      <ul class="footer-links">{items.map(([name, href]) => <li><a href={href}>{name}</a></li>)}{areaEnabled && <li><a href="/reperes/">{en ? 'Area facts (French)' : 'Repères géographiques'}</a></li>}</ul>
+    </div>
+    <p class="footer-copy">© {new Date().getFullYear()} · {property.name} · {property.city}, {property.region}</p>
+    <p class="footer-copy">{en ? 'Contact-page views and phone-link clicks are counted without cookies or visitor identifiers. These counts do not record the content of your calls.' : 'Les consultations de la page contact et les clics sur le téléphone sont comptés sans cookie ni identifiant de visiteur. Le contenu de vos appels n’est pas enregistré par ce compteur.'}</p>
+  </div>
 </footer>
