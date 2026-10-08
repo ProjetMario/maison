@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import { MapPin, Route } from 'lucide-astro';
-import { area, density, number, mapUrl, routeUrl, sourceUrl, townPath, type Town } from '../data/area';
+import { area, density, number, mapUrl, routeUrl, sourceUrl, townPath, nearbyTowns, type Town } from '../data/area';
 import { photos } from '../data/photos';
 const { town } = Astro.props as { town: Town };
 const base = area.base;
-const neighbours = area.towns.filter(item => item.department.code === town.department.code && item.code !== town.code).sort((a,b) => Math.abs(a.km-town.km)-Math.abs(b.km-town.km)).slice(0,4);
+const neighbours = nearbyTowns(town);
 const populationDifference = town.population - base.population;
 const rows = [
   ['Département', `${town.department.nom} (${town.department.code})`, `${base.department.nom} (${base.department.code})`],
@@ -54,4 +54,4 @@ const rows = [
   <p>Données de l’API Découpage administratif de l’État, téléchargées le {new Date(area.retrievedAt).toLocaleDateString('fr-FR', {timeZone:'UTC'})}. Le millésime de population n’est pas précisé dans la réponse utilisée. Les surfaces sont converties des hectares en km² ; les densités et distances sont calculées puis arrondies.</p>
   <ul class="source-list"><li><a href={sourceUrl(town)}>Données officielles de {town.name}, code {town.code}</a></li><li><a href={sourceUrl(base)}>Données officielles de Voglans</a></li><li><a href="https://geo.api.gouv.fr/decoupage-administratif/communes">Documentation et périmètre de la source</a></li></ul>
 </section>
-<section class="editorial-section"><h2>Autres communes du département</h2><ul class="source-list">{neighbours.map(item => <li><a href={townPath(item)}>{item.name} ({item.code}) : {number(item.km,1)} km de Voglans à vol d’oiseau</a></li>)}</ul><p><a href="/reperes/">Toutes les communes</a></p></section>
+<section class="editorial-section"><h2>Communes proches de {town.name}</h2><ul class="source-list">{neighbours.map(({ town: item, distance }) => <li><a href={townPath(item)}>{item.name} ({item.department.code}) : {number(distance / 1000,1)} km de {town.name} à vol d’oiseau</a></li>)}</ul><p>Distances entre les centres communaux parmi les communes présentes dans cet annuaire.</p><p><a href="/reperes/">Toutes les communes</a></p></section>

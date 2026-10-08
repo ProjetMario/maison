@@ -1,0 +1,67 @@
+---
+import { ArrowLeft, RotateCcw, Plus, Minus, Maximize, MoveUpRight, Grid2X2 } from 'lucide-astro';
+import '../styles/house-plan.css';
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plan 3D de la maison | Aperçu d’aménagement</title>
+    <meta name="description" content="Aperçu interactif indicatif des deux niveaux de la maison : séjour et cuisine en haut, trois chambres et pièces d’eau en bas." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://maison-vuelac.com/plan-3d/" />
+  </head>
+  <body>
+    <main class="plan-app">
+      <header class="plan-header">
+        <a href="/" class="icon-button back" aria-label="Retour à la maison" title="Retour à la maison"><ArrowLeft size={20} /></a>
+        <div><p class="eyebrow">MAISON VUE LAC · VOGLANS</p><h1>La maison en 3D</h1></div>
+        <span class="preview-badge">Aperçu local</span>
+      </header>
+      <section class="plan-workspace" aria-label="Plan interactif de la maison">
+        <div class="plan-toolbar">
+          <div class="segmented" role="group" aria-label="Niveau affiché">
+            <button type="button" data-view="all" aria-pressed="true">Ensemble</button>
+            <button type="button" data-view="upper" aria-pressed="false">Haut</button>
+            <button type="button" data-view="lower" aria-pressed="false">Bas</button>
+          </div>
+          <div class="display-options">
+            <label><input id="show-furniture" type="checkbox" checked />Meubles</label>
+            <label><input id="show-labels" type="checkbox" checked />Pièces</label>
+          </div>
+        </div>
+        <div class="scene" id="plan-scene" aria-busy="true">
+          <canvas id="plan-canvas" tabindex="0" aria-label="Maquette 3D de la maison, deux niveaux de 10 mètres sur 7"></canvas>
+          <div id="plan-labels" aria-hidden="true"></div>
+          <div class="scene-status" id="scene-status" role="status"><span class="loading-dot"></span>Préparation de la maquette…</div>
+          <div id="plan-fallback" hidden>
+            <img src="/plan-3d-proposition.png" alt="Proposition de plan : séjour, cuisine, cellier et WC en haut ; trois chambres, deux salles d’eau et buanderie en bas." />
+            <p>La 3D n’est pas disponible sur cet appareil. Voici le plan indicatif.</p>
+          </div>
+          <div class="camera-tools" role="group" aria-label="Vue de la maquette">
+            <button type="button" class="icon-button" id="view-top" title="Vue du dessus" aria-label="Vue du dessus" aria-pressed="false"><Grid2X2 size={20} /></button>
+            <button type="button" class="icon-button" id="view-perspective" title="Vue en perspective" aria-label="Vue en perspective" aria-pressed="true"><MoveUpRight size={20} /></button>
+            <span class="tool-separator"></span>
+            <button type="button" class="icon-button" id="zoom-in" title="Rapprocher" aria-label="Rapprocher"><Plus size={20} /></button>
+            <button type="button" class="icon-button" id="zoom-out" title="Éloigner" aria-label="Éloigner"><Minus size={20} /></button>
+            <button type="button" class="icon-button" id="reset-camera" title="Réinitialiser la vue" aria-label="Réinitialiser la vue"><RotateCcw size={19} /></button>
+            <button type="button" class="icon-button" id="fullscreen" title="Plein écran" aria-label="Plein écran"><Maximize size={19} /></button>
+          </div>
+        </div>
+        <footer class="plan-footer">
+          <div><strong id="view-caption">Deux niveaux</strong><span>10,00 × 7,00 m par niveau</span></div>
+          <p>Proposition d’aménagement. Cloisons, ouvertures et escalier à confirmer.</p>
+        </footer>
+      </section>
+      <section class="room-summary" aria-label="Répartition des pièces">
+        <div><h2>Niveau haut</h2><p>Séjour / repas · Cuisine ouverte · Cellier · WC</p></div>
+        <div><h2>Niveau bas</h2><p>3 chambres dont suite parentale · Douche italienne · Salle de bain · Buanderie</p></div>
+      </section>
+    </main>
+    <script>
+      import { initHousePlan } from '../scripts/house-plan';
+      initHousePlan();
+    </script>
+  </body>
+</html>

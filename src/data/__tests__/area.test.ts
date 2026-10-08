@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getDistance } from 'geolib';
-import { area, density, slug, townPath, routeUrl, sourceUrl } from '../area';
+import { area, density, slug, townPath, routeUrl, sourceUrl, nearbyTowns } from '../area';
 
 describe('Sourced geographic sheets', () => {
   it('provides exactly 1,999 unique sheets plus a directory', () => {
@@ -42,5 +42,16 @@ describe('Sourced geographic sheets', () => {
     expect(url.searchParams.get('destination')).toBe(`${area.base.coordinates[1]},${area.base.coordinates[0]}`);
     expect(new URL(sourceUrl(town)).pathname).toBe(`/communes/${town.code}`);
     expect(density({ population: 200, areaKm2: 4 })).toBe(50);
+  });
+  it('links nearby towns using the distance from the selected town', () => {
+    const town = area.towns.find(item => item.name === 'Chambéry')!;
+    const neighbours = nearbyTowns(town);
+    expect(neighbours).toHaveLength(6);
+    expect(neighbours.some(item => item.town.code === town.code)).toBe(false);
+    for (const item of neighbours) expect(item.distance).toBe(getDistance(town.coordinates, item.town.coordinates));
+    const maximum = neighbours.at(-1)!.distance;
+    for (const other of area.towns.filter(item => item.code !== town.code && !neighbours.some(neighbour => neighbour.town.code === item.code))) {
+      expect(getDistance(town.coordinates, other.coordinates)).toBeGreaterThanOrEqual(maximum);
+    }
   });
 });

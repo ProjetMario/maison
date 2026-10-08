@@ -5,6 +5,7 @@
 	width: auto;
 	object-fit: contain;
 	display: block;
+	filter: brightness(1.08) contrast(1.06) saturate(1.04);
 }
 
 .glightbox-container .gslide {

@@ -56,23 +56,6 @@ const schema = [
       acceptedAnswer: { '@type': 'Answer', text: faq.answer },
     })),
   },
-  {
-    '@type': 'RealEstateListing',
-    '@id': `${absoluteUrl('/maison-vue-lac-bourget/')}#listing`,
-    url: absoluteUrl('/maison-vue-lac-bourget/'),
-    name: title,
-    description,
-    inLanguage: 'fr',
-    image: absoluteUrl(heroImg.src),
-    mainEntity: { '@id': `${property.origin}/#house` },
-    offers: {
-      '@type': 'Offer',
-      price: property.price,
-      priceCurrency: property.currency,
-      availability: 'https://schema.org/InStock',
-      url: absoluteUrl('/maison-vue-lac-bourget/'),
-    },
-  },
 ];
 ---
 
@@ -101,14 +84,14 @@ const schema = [
 
     <div class="editorial-body">
       <section class="editorial-section">
-        <h2>Une recherche “maison vue lac Bourget” avec une fiche propriétaire complète</h2>
-        <p>Cette page rassemble les informations attendues par les acheteurs qui comparent les maisons avec vue sur le lac du Bourget : prix, surface, chambres, piscine, DPE, localisation et contact direct. L’objectif est de présenter le bien sans passer par une page de portail immobilier généraliste.</p>
+        <h2>Une maison contemporaine à Voglans avec vue sur le lac</h2>
+        <p>Construite en {property.yearBuilt}, cette maison de {property.area} m² habitables propose {property.bedrooms} chambres, une piscine chauffée et un garage double. Le prix demandé est de {price()}, pour une vente directe avec les propriétaires.</p>
         <p>La maison se situe à Voglans, entre Chambéry, Aix-les-Bains et Le Bourget-du-Lac. Elle profite d’un panorama sur le lac et la Dent du Chat, tout en restant une maison de quartier résidentiel : ce n’est pas une propriété en bord d’eau ni une maison les pieds dans l’eau.</p>
       </section>
 
       <section class="editorial-section">
         <h2>Les critères qui comptent pour comparer</h2>
-        <p>Les portails immobiliers mettent en avant les filtres “vue panoramique”, “piscine”, “maison”, “Savoie” et “lac du Bourget”. Ici, ces critères sont détaillés avec les informations propres au bien : {property.area} m² habitables, {property.bedrooms} chambres, construction {property.yearBuilt}, piscine au sel chauffée, terrasses, jardin, garage double et vente directe entre particuliers.</p>
+        <p>Le séjour et la cuisine ouverte sont à l’étage. Les trois chambres se trouvent au niveau inférieur, dont une suite parentale avec douche à l’italienne. Ce niveau comporte également une salle de bain avec douche et baignoire, ainsi qu’une buanderie.</p>
         <p>La configuration en duplex inversé place l’espace de vie à l’étage pour profiter de la lumière et de la vue. Les chambres sont séparées au rez-de-chaussée. Les escaliers, le voisinage, l’environnement sonore et les accès doivent être appréciés lors de la visite.</p>
       </section>
 

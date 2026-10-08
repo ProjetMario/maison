@@ -1,4 +1,5 @@
 import snapshot from './area-snapshot.json';
+import { getDistance } from 'geolib';
 
 export const areaEnabled = process.env.INCLUDE_AREA_PAGES === 'true';
 export const area = snapshot;
@@ -11,3 +12,9 @@ export const density = (town: { population: number; areaKm2: number }) => Math.r
 export const mapUrl = (town: { coordinates: number[] }) => `https://www.openstreetmap.org/?mlat=${town.coordinates[1]}&mlon=${town.coordinates[0]}#map=12/${town.coordinates[1]}/${town.coordinates[0]}`;
 export const routeUrl = (town: Town) => `https://www.google.com/maps/dir/?api=1&origin=${town.coordinates[1]},${town.coordinates[0]}&destination=${area.base.coordinates[1]},${area.base.coordinates[0]}`;
 export const sourceUrl = (town: { code: string }) => `https://geo.api.gouv.fr/communes/${town.code}?fields=nom,code,codesPostaux,departement,region,centre,surface,population`;
+export function nearbyTowns(town: Town, limit = 6) {
+  return area.towns.filter(item => item.code !== town.code)
+    .map(item => ({ town: item, distance: getDistance(town.coordinates, item.coordinates) }))
+    .sort((a, b) => a.distance - b.distance || a.town.code.localeCompare(b.town.code))
+    .slice(0, limit);
+}

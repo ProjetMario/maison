@@ -71,5 +71,10 @@ if (!process.argv.includes('--submit')) {
   assert.ok([200, 202].includes(response.status), `IndexNow rejected the submission (${response.status}): ${await response.text()}`);
   await mkdir(path.join(root, '.seo'), { recursive: true });
   await writeFile(path.join(root, statePath), JSON.stringify(next, null, 2));
+  await writeFile(path.join(root, '.seo/indexnow-receipt.json'), JSON.stringify({
+    receivedAt: new Date().toISOString(), status: response.status, origin: build.origin,
+    submitted: urlList.length, verifiedLivePages: changed.length, removed: removed.length,
+    build, guaranteesIndexing: false,
+  }, null, 2));
   console.log(`IndexNow received ${urlList.length} URLs (HTTP ${response.status}). This does not guarantee indexing.`);
 }

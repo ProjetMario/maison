@@ -1,5 +1,120 @@
 # Maison vue Lac : référencement et publication
 
+## Audit du 8 octobre 2026
+
+Le site public contient aujourd'hui **2 025 URL de contenu**. Les nombres
+2 024 mentionnés plus bas décrivent les publications historiques du 30 septembre.
+Déploiement de production vérifié : `6ac7e5f0e0c9029ebf68e5b6`, sur le même
+projet Netlify `maison` et le même domaine. La fonction `contact-event` est
+conservée : sa route personnalisée `/api/contact-event` répond 405 sur GET,
+sans création d'événement de suivi. Le compte CLI propriétaire `mario mario` a été rétabli après
+vérification de l'identité du créateur du site et de l'équipe `2savoie`.
+
+### Constats des moteurs
+
+- Google, rapport d'indexation mis à jour le 4 octobre : **416 pages indexées**,
+  **1 609 détectées, actuellement non indexées**, **3 pages avec redirection**.
+  Le dernier groupe correspond aux variantes HTTP/www de l'accueil, qui doivent
+  rester redirigées. Les URL détectées ne sont pas des erreurs HTTP : Google
+  n'avait pas encore exploré ces pages. L'export contient au maximum 1 000
+  exemples sur les 1 609 ; le contrôle indépendant porte sur les 2 025 URL.
+- Aucune action manuelle, aucun problème de sécurité, aucun fichier robots.txt
+  invalide, aucune erreur HTTPS signalée. Fils d'Ariane : 0 élément invalide,
+  10 valides. Les Core Web Vitals manquent de données réelles ; cela ne prouve
+  ni une panne ni un bon score. Statistiques d'exploration : 905 requêtes,
+  99 % HTTP 200, moyenne 280 ms, aucun problème d'hôte sur 90 jours.
+- Une requête Google HTTP 404 concernait `/feed` le 6 octobre. Un vrai flux
+  RSS `/feed.xml` contient maintenant la fiche de vente et les 12 guides ;
+  `/feed` et `/feed/` redirigent en 301 vers ce flux.
+- La fiche `/maison-vue-lac-bourget/` était déjà indexée. Son test en ligne du
+  8 octobre confirme l'accès Google et un fil d'Ariane valide. Sa mise à jour
+  a été ajoutée à la file d'exploration prioritaire, confirmation conservée
+  dans `.seo/proofs/google-indexation-demandee-2026-10-08.jpg`.
+  Les guides `/guides/duplex-inverse-maison-voglans/` et
+  `/guides/terrasses-piscine-jardin/`, détectés mais jamais explorés, ont
+  également reçu une confirmation de demande d'indexation.
+- Bing : le statut enregistré de l'accueil était « Discovered but not crawled ».
+  Le test en ligne confirme « URL can be indexed by Bing » et « No SEO/GEO
+  issues found ». Une demande d'indexation a été acceptée. Le scan intégré
+  ne peut pas démarrer : quota de scan disponible de 0 page. Le rapport
+  AI Performance affiche « No data available » ; aucune citation IA démontrée.
+
+### Corrections publiées et vérification
+
+- Audit HTTP exhaustif des 2 025 pages : 2 025 réponses 200, aucune page
+  orpheline, aucun blocage technique détecté par les contrôles. Les cinq liens
+  internes sans slash signalés par l'audit ont été normalisés. Le rapport
+  initial est dans `.seo/audit-before.json`.
+  L'audit public final `.seo/audit-apres.json` vérifie aussi les empreintes
+  du build : **2 025 réponses 200, 2 025 pages accessibles depuis l'accueil,
+  0 anomalie et 0 avertissement** selon les contrôles du script.
+- Sitemap historique `/sitemap.xml` conservé, avec les 2 025 URL canoniques.
+  Nouvel index `/sitemap-index.xml` : 14 fichiers, sans doublon, partitionnés
+  en pages de vente/guides, annuaire et 12 départements. Le fichier
+  `/sitemap-maison.xml` contient 25 pages. Les deux sitemaps racine sont
+  déclarés dans robots.txt. Les dates réelles de modification sont conservées
+  dans `src/data/content-updates.json`, sans date artificielle à chaque build.
+- Maillage vers les six communes réellement les plus proches, mesuré entre
+  leurs centres avec geolib. Données structurées des fiches cohérentes avec
+  les données visibles, citations de l'API publique et limites de calcul.
+  Le snapshot source n'a pas été actualisé : aucun nouveau millésime de
+  population ou fait local n'est inventé.
+- Fiche immobilière structurée harmonisée, entité maison unique, prix et
+  disponibilité cohérents, fils d'Ariane hiérarchiques, extraits autorisés
+  et alternances français/anglais réciproques. Le plan 3D conceptuel reste
+  disponible dans le code de preview, mais est exclu du build public ; son
+  URL et son image répondent toujours 404 en production.
+- Build de production et contrôle SEO réussis ; **41 tests sur 6 fichiers
+  réussis** en une exécution. Vérification publique des 14 sous-sitemaps,
+  du RSS, du 301 `/feed` et d'une URL inconnue en 404. Les empreintes SHA-256
+  des **2 025 pages publiées** correspondent toutes au build local validé.
+- IndexNow a reçu les **2 025 URL, HTTP 200**. Le reçu est dans
+  `.seo/indexnow-receipt.json`. Réception ne signifie pas indexation.
+
+Les sitemaps historique et index ont été soumis à Google et Bing le 8 octobre.
+Le sitemap des 25 pages de vente/guides a aussi été déclaré séparément à Google.
+Le sitemap historique reste reconnu par Google, avec 2 025 pages découvertes.
+Le premier traitement du nouvel index Google a affiché une erreur de
+récupération ; son inspection en ligne confirme pourtant « Récupération de
+page : Réussie », exploration autorisée et réponse publique HTTP 200.
+Il a été renvoyé une fois après ce diagnostic. Au dernier contrôle, l'index
+et le sitemap des 25 pages affichent encore « Impossible de récupérer le
+sitemap ». Leur lecture par le traitement de sitemaps Google n'est donc
+pas confirmée, malgré des fichiers XML valides et accessibles. Le sitemap
+historique accepté contient déjà toutes les URL ; aucun chemin n'en est exclu.
+Ne pas masquer ce statut ni présenter la réception comme une lecture complète.
+Bing confirme maintenant **Success pour les deux fichiers**, lus le 8 octobre,
+sans erreur ni avertissement ; les compteurs de plusieurs sitemaps peuvent compter les mêmes
+URL plusieurs fois et ne représentent pas des pages uniques indexées.
+
+Pour refaire les contrôles après une publication :
+
+```sh
+npm run check:seo
+npm run check:seo:live -- --report=audit-apres --verify-build
+npm test -- --run --hookTimeout=60000 --testTimeout=30000 --maxWorkers=1 --no-file-parallelism
+npm run indexnow -- --submit
+```
+
+Le déploiement manuel et les sources Git doivent rester synchronisés : un
+prochain push sur `main` déclenche le build Netlify. Le commit de cet audit
+utilise `[skip netlify]` pour conserver la publication déjà vérifiée.
+Les rapports privés, preuves de compte et originaux photo ne sont ni publiés
+ni ajoutés à Git. Aucun abonnement, scan payant ou suivi récurrent n'est créé.
+
+L'éligibilité technique ne garantit pas la sélection de chaque fiche
+géographique : les moteurs évaluent aussi l'utilité et l'originalité de ces
+pages pour un site vendant une seule maison à Voglans. Ne pas créer davantage
+de pages en masse pour résoudre ce statut. Prioriser les informations utiles
+aux acheteurs et la fiche de vente plutôt que promettre 100 % d'indexation.
+Pour les fonctions IA Google, les mêmes exigences SEO s'appliquent ; aucune
+balise spéciale ne garantit une citation ou un classement.
+
+Références :
+- https://support.google.com/webmasters/answer/7451001
+- https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
+- https://developers.google.com/search/docs/appearance/ai-features
+
 ## Domaine et données
 
 Le projet Netlify `maison` utilise **https://maison-vuelac.com**. Le nom

@@ -8,6 +8,7 @@
 		"build:preview": "SITE_INDEXABLE=false CONTENT_BATCH=3 INCLUDE_AREA_PAGES=true node scripts/build.mjs",
 		"import:area": "node scripts/import-area-data.mjs",
 		"check:seo": "node scripts/check-seo.mjs",
+		"check:seo:live": "node scripts/audit-live-seo.mjs",
 		"indexnow": "node scripts/indexnow.mjs",
 		"preview": "astro preview",
 		"astro": "astro",
@@ -48,6 +49,7 @@
 	"dependencies": {
 		"@netlify/blobs": "^8.2.0",
 		"@netlify/functions": "^6.0.0",
-		"geolib": "^3.3.4"
+		"geolib": "^3.3.4",
+		"playcanvas": "^2.22.6"
 	}
 }

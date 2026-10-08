@@ -2,7 +2,8 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import AreaDirectory from '../../components/AreaDirectory.astro';
 import AreaSheet from '../../components/AreaSheet.astro';
-import { areaEnabled, area, slug, number, type Town } from '../../data/area';
+import { areaEnabled, area, slug, number, sourceUrl, townPath, density, type Town } from '../../data/area';
+import { absoluteUrl } from '../../data/seo';
 import '../../styles/area.css';
 export function getStaticPaths() {
   return areaEnabled ? [{ params: { slug: undefined }, props: { town: null } }, ...area.towns.map(town => ({ params: { slug: slug(town) }, props: { town } }))] : [];
@@ -10,7 +11,32 @@ export function getStaticPaths() {
 const { town } = Astro.props as { town: Town | null };
 const title = town ? `${town.name} (${town.code}) et Voglans : distance et repères` : 'Communes et distances autour de Voglans | Repères géographiques';
 const description = town ? `${town.name}, ${town.department.nom} : ${number(town.population)} habitants, ${number(town.areaKm2,2)} km² et ${number(town.km,1)} km de Voglans à vol d’oiseau. Données sourcées, comparaison et itinéraire.` : 'Comparez les données de 1 999 communes avec Voglans : populations, surfaces, distances à vol d’oiseau et liens cartographiques. Sources publiques et méthode.';
+const canonical = absoluteUrl(town ? townPath(town) : '/reperes/');
+const mainEntity = `${canonical}#${town ? 'donnees' : 'annuaire'}`;
+const schema: Record<string, unknown>[] = town ? [{
+  '@type': 'Dataset', '@id': mainEntity, url: canonical,
+  name: `Données communales de ${town.name} et comparaison avec Voglans`, description,
+  inLanguage: 'fr', dateModified: area.retrievedAt,
+  creator: { '@type': 'Organization', name: 'API Découpage administratif', url: 'https://geo.api.gouv.fr/' },
+  isBasedOn: { '@type': 'CreativeWork', url: sourceUrl(town) },
+  citation: [sourceUrl(town), sourceUrl(area.base), 'https://geo.api.gouv.fr/decoupage-administratif/communes'],
+  measurementTechnique: 'Surface convertie des hectares en km² ; densité calculée ; distances à vol d’oiseau entre les centres communaux.',
+  spatialCoverage: {
+    '@type': 'Place', name: town.name, identifier: town.code,
+    geo: { '@type': 'GeoCoordinates', latitude: town.coordinates[1], longitude: town.coordinates[0] },
+    address: { '@type': 'PostalAddress', addressLocality: town.name, addressRegion: town.department.nom, addressCountry: 'FR' },
+  },
+  variableMeasured: [
+    { '@type': 'PropertyValue', name: 'Population municipale fournie par l’API', value: town.population },
+    { '@type': 'PropertyValue', name: 'Surface communale', value: town.areaKm2, unitText: 'km²' },
+    { '@type': 'PropertyValue', name: 'Densité calculée', value: density(town), unitText: 'habitants/km²' },
+    { '@type': 'PropertyValue', name: 'Distance à vol d’oiseau du centre de Voglans', value: town.km, unitText: 'km' },
+  ],
+}] : [{
+  '@type': 'CollectionPage', '@id': mainEntity, url: canonical, name: title, description,
+  mainEntity: { '@type': 'ItemList', numberOfItems: area.towns.length },
+}];
 ---
-<MainLayout title={title} description={description}>
+<MainLayout title={title} description={description} schema={schema} mainEntity={mainEntity}>
   <article class="editorial area-editorial">{town ? <AreaSheet town={town} /> : <AreaDirectory />}</article>
 </MainLayout>

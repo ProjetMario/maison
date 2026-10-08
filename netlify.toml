@@ -19,6 +19,18 @@
   CONTENT_BATCH = "3"
 
 [[redirects]]
+  from = "/feed"
+  to = "/feed.xml"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/feed/"
+  to = "/feed.xml"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/videos"
   to = "/video/"
   status = 301

@@ -9,9 +9,10 @@ import ContactMeasurement from '../components/ContactMeasurement.astro';
 import property from '../data/property.json';
 import { pages, pathKey, absoluteUrl, alternatives, indexable, type Language } from '../data/seo';
 import { getImage } from 'astro:assets';
+import { lastModified } from '../data/sitemap';
 import cover from '../gallery/landing/LANDING 2.jpg';
 
-interface Props { title?: string; description?: string; lang?: Language; image?: string; article?: boolean; noindex?: boolean; schema?: Record<string, unknown>[]; }
+interface Props { title?: string; description?: string; lang?: Language; image?: string; article?: boolean; noindex?: boolean; schema?: Record<string, unknown>[]; mainEntity?: string; }
 const path = pathKey(Astro.url.pathname);
 const { lang = 'fr', article = false, noindex = false } = Astro.props;
 const meta = pages[path] ?? pages['/'];
@@ -22,13 +23,14 @@ const shareImage = Astro.props.image ?? (await getImage({ src: cover, width: 120
 const alternateLinks = alternatives(path);
 const en = lang === 'en';
 const home = en ? '/en/' : '/';
+const listing = path === '/' || path === '/en/' || path === '/maison-vue-lac-bourget/';
 const googleAnalyticsId = process.env.GOOGLE_ANALYTICS_ID ?? process.env.PUBLIC_GA_MEASUREMENT_ID;
 const graph: Record<string, unknown>[] = [
   { '@type': 'WebSite', '@id': `${property.origin}/#website`, url: `${property.origin}/`, name: property.name, inLanguage: ['fr', 'en'] },
-  { '@type': article ? 'Article' : (path === '/' || path === '/en/' ? 'RealEstateListing' : 'WebPage'), '@id': `${canonical}#page`, url: canonical, name: title, ...(article ? { headline: title, author: { '@type': 'Person', name: en ? 'The property owners' : 'Les propriétaires' } } : {}), description, inLanguage: lang, image: absoluteUrl(shareImage), isPartOf: { '@id': `${property.origin}/#website` } },
+  { '@type': article ? 'Article' : (listing ? 'RealEstateListing' : 'WebPage'), '@id': `${canonical}#page`, url: canonical, name: title, ...(!noindex ? { dateModified: lastModified(path) } : {}), ...(article ? { headline: title, author: { '@type': 'Person', name: en ? 'The property owners' : 'Les propriétaires' } } : {}), description, inLanguage: lang, image: absoluteUrl(shareImage), isPartOf: { '@id': `${property.origin}/#website` }, ...(Astro.props.mainEntity ? { mainEntity: { '@id': Astro.props.mainEntity } } : {}) },
 ];
-if (path === '/' || path === '/en/' || path === '/maison-vue-lac-bourget/') {
-  graph.push({ '@type': 'SingleFamilyResidence', '@id': `${property.origin}/#house`, name: en ? 'Lake-view house in Voglans' : 'Maison avec vue lac à Voglans', url: canonical, image: absoluteUrl(shareImage), numberOfBedrooms: property.bedrooms, yearBuilt: property.yearBuilt, floorSize: { '@type': 'QuantitativeValue', value: property.area, unitCode: 'MTK' }, address: { '@type': 'PostalAddress', streetAddress: property.street, addressLocality: property.city, postalCode: property.postalCode, addressRegion: property.region, addressCountry: property.country }, geo: { '@type': 'GeoCoordinates', latitude: property.latitude, longitude: property.longitude }, amenityFeature: [
+if (listing) {
+  graph.push({ '@type': 'SingleFamilyResidence', '@id': `${property.origin}/#house`, name: en ? 'Lake-view house in Voglans' : 'Maison avec vue lac à Voglans', url: absoluteUrl('/'), image: absoluteUrl(shareImage), numberOfBedrooms: property.bedrooms, yearBuilt: property.yearBuilt, floorSize: { '@type': 'QuantitativeValue', value: property.area, unitCode: 'MTK' }, address: { '@type': 'PostalAddress', streetAddress: property.street, addressLocality: property.city, postalCode: property.postalCode, addressRegion: property.region, addressCountry: property.country }, geo: { '@type': 'GeoCoordinates', latitude: property.latitude, longitude: property.longitude }, amenityFeature: [
     { '@type': 'LocationFeatureSpecification', name: 'Vue sur le lac du Bourget', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Piscine au sel chauffée', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Garage double', value: true },
@@ -37,10 +39,11 @@ if (path === '/' || path === '/en/' || path === '/maison-vue-lac-bourget/') {
   ] });
   graph[1].mainEntity = { '@id': `${property.origin}/#house` };
 }
-if (path === '/' || path === '/en/') {
+if (listing) {
   graph[1].offers = { '@type': 'Offer', price: property.price, priceCurrency: property.currency, url: canonical, availability: property.status === 'sold' ? 'https://schema.org/SoldOut' : property.status === 'under-offer' ? 'https://schema.org/Reserved' : 'https://schema.org/InStock', itemOffered: { '@id': `${property.origin}/#house` } };
 }
-if (path !== home) graph.push({ '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: en ? 'Home' : 'Accueil', item: absoluteUrl(home) }, ...(article ? [{ '@type': 'ListItem', position: 2, name: 'Guides', item: absoluteUrl('/guides/') }] : []), { '@type': 'ListItem', position: article ? 3 : 2, name: title, item: canonical }] });
+const parent = article ? { name: 'Guides', path: '/guides/' } : path.startsWith('/reperes/') && path !== '/reperes/' ? { name: 'Repères', path: '/reperes/' } : null;
+if (path !== home) graph.push({ '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: en ? 'Home' : 'Accueil', item: absoluteUrl(home) }, ...(parent ? [{ '@type': 'ListItem', position: 2, name: parent.name, item: absoluteUrl(parent.path) }] : []), { '@type': 'ListItem', position: parent ? 3 : 2, name: title, item: canonical }] });
 graph.push(...(Astro.props.schema ?? []));
 const favicon = siteConfig.favicon;
 ---
@@ -54,7 +57,8 @@ const favicon = siteConfig.favicon;
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
-		<meta name="robots" content={!indexable || noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+		<link rel="alternate" type="application/rss+xml" title={property.name} href={absoluteUrl('/feed.xml')} />
+		<meta name="robots" content={!indexable || noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
 		{alternateLinks.map(({ lang, path }) => <link rel="alternate" hreflang={lang} href={absoluteUrl(path)} />)}
 		{process.env.GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={process.env.GOOGLE_SITE_VERIFICATION} />}
 		{process.env.BING_SITE_VERIFICATION && <meta name="msvalidate.01" content={process.env.BING_SITE_VERIFICATION} />}
