@@ -1,5 +1,63 @@
 # Maison vue Lac : référencement et publication
 
+## Suivi du 11 octobre 2026
+
+Les erreurs de récupération des nouveaux sitemaps constatées le 8 octobre
+ne sont plus présentes. Google confirme maintenant :
+
+- `/sitemap.xml` : opération effectuée, lecture le 8 octobre, 2 025 URL.
+- `/sitemap-index.xml` : opération effectuée, lecture le 9 octobre, 2 025 URL.
+- `/sitemap-maison.xml` : opération effectuée, lecture le 9 octobre, 25 URL.
+- Les **14 sous-sitemaps**, vérifiés dans le tableau de
+  l'index, sont tous en « Opération effectuée », lus entre le 8 et le 10 octobre.
+  Leur partition contient bien 2 025 URL ; les déclarations complémentaires
+  ne sont pas des pages supplémentaires.
+
+Les inspections individuelles des guides `/guides/duplex-inverse-maison-voglans/`
+et `/guides/terrasses-piscine-jardin/` confirment maintenant **« Cette URL est
+sur Google » et « La page est indexée »**, avec HTTPS et un fil d'Ariane valides.
+Ces deux guides n'étaient pas indexés lors de leur soumission du 8 octobre.
+Cette progression est constatée ; elle ne permet pas d'attribuer avec certitude
+l'indexation à une seule correction ou à la demande manuelle.
+
+Le rapport global reste daté du **4 octobre**, avec 416 pages indexées,
+1 609 détectées non indexées et 3 redirections. Ces compteurs ne donnent donc
+pas encore un bilan après les corrections. Ne pas ajouter mécaniquement les
+deux guides aux 416 ni annoncer que les 2 025 pages sont indexées.
+
+Demandes Google acceptées le 11 octobre pour trois autres guides :
+
+- `/guides/documents-achat-maison/` : URL non reconnue dans l'inspection.
+- `/guides/ecoles-services-voglans/` : URL non reconnue dans l'inspection.
+- `/guides/deplacements-chambery-aix-les-bains/` : détectée, non indexée.
+
+Les trois demandes ont reçu la confirmation d'ajout à la file d'exploration
+prioritaire après le contrôle automatique de Google. Elles ne constituent
+pas encore une indexation. Aucun renvoi répété des sitemaps déjà acceptés.
+
+Bing a été reconnecté avec la session Google existante, sans nouveau compte
+ni modification d'autorisation. La propriété Maison Vue Lac a été sélectionnée
+explicitement après la connexion. Les deux sitemaps restent en **Success**,
+avec **0 erreur et 0 avertissement**. L'accueil et la fiche de vente restent
+« Discovered but not crawled » dans l'index enregistré ; l'accueil affiche
+encore « Page Fetch Failed » sans date de tentative exploitable. Leurs deux
+tests réels du jour réussissent pourtant : **URL can be indexed by Bing**,
+**No SEO/GEO issues found**, deux types de balisage reconnus. La demande
+d'indexation spécifique de `/maison-vue-lac-bourget/` a été acceptée par Bing.
+L'indexation effective de ces deux URL par Bing n'est pas confirmée.
+
+Le nouvel audit public `.seo/audit-2026-10-11.json` contrôle l'intégralité
+des **2 025 pages** : HTTP 200 pour toutes, toutes accessibles depuis l'accueil,
+empreintes identiques au build validé, **0 anomalie et 0 avertissement** selon
+les contrôles du script. Aucun nouveau blocage technique justifiant une
+modification de code ou un redéploiement n'a été détecté. Les sources, dates
+de contenu et la publication du 8 octobre sont conservées ; seul ce bilan
+est actualisé. Aucun nouvel envoi IndexNow des URL inchangées n'est effectué.
+
+Preuves locales dans `.seo/proofs/` : confirmations des sitemaps Google,
+des deux guides indexés, des trois demandes Google et de la demande Bing,
+avec le suffixe `2026-10-11.jpg`. Elles restent hors Git et hors déploiement.
+
 ## Audit du 8 octobre 2026
 
 Le site public contient aujourd'hui **2 025 URL de contenu**. Les nombres
